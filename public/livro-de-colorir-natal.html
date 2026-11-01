@@ -1,10 +1,3 @@
-<!--
-  LIVRO DE COLORIR DE NATAL - PÁGINA DE VENDAS COMPLETA (ARQUIVO ÚNICO)
-  
-  Instruções:
-  1. Para alterar o link de pagamento, vá até a tag <script> e mude a variável CHECKOUT_URL.
-  2. Para trocar as imagens das páginas ou fotos, mude os links nos arrays CARROSSEL_DESENHOS e CARROSSEL_CRIANCAS.
--->
 <!doctype html>
 <html lang="pt-BR">
   <head>
@@ -17,11 +10,33 @@
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#D62828" />
 
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1504602178383511');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1504602178383511&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Google Fonts: Fredoka (Títulos) e Nunito (Textos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
     <style>
+      /* ==========================================================================
+         RESET & VARIÁVEIS DO TEMA NATALINO
+         ========================================================================== */
       :root {
         /* Cores Natalinas Vivas, Saturadas e Radiantes */
         --cor-vermelho: #E6192E;
@@ -68,7 +83,9 @@
       }
 
       @media (min-width: 768px) {
-        body { padding-bottom: 0; }
+        body {
+          padding-bottom: 0;
+        }
       }
 
       #snow-canvas {
@@ -89,7 +106,9 @@
         letter-spacing: -0.01em;
       }
 
-      .text-balance { text-wrap: balance; }
+      .text-balance {
+        text-wrap: balance;
+      }
 
       .container {
         width: 100%;
@@ -167,6 +186,9 @@
         border: 1.5px solid rgba(245, 158, 11, 0.5);
       }
 
+      /* ==========================================================================
+         1. BARRA DO TOPO (FINA COM CONTADOR REGRESSIVO)
+         ========================================================================== */
       .top-bar {
         background: linear-gradient(90deg, #065F46 0%, #059669 50%, #065F46 100%);
         color: #FFFFFF;
@@ -200,6 +222,9 @@
         border: 1px solid rgba(245, 158, 11, 0.5);
       }
 
+      /* ==========================================================================
+         2. HERO (PRIMEIRA DOBRA)
+         ========================================================================== */
       .hero-section {
         padding: 40px 0 35px;
         text-align: center;
@@ -469,6 +494,8 @@
         }
       }
 
+
+
       .trust-seals-mini {
         display: flex;
         align-items: center;
@@ -497,6 +524,9 @@
         stroke-linejoin: round;
       }
 
+      /* ==========================================================================
+         3. FAIXA DE 4 BENEFÍCIOS RÁPIDOS (ÍCONES SVG PROFISSIONAIS)
+         ========================================================================== */
       .benefits-strip {
         background-color: #FFFFFF;
         border-top: 2px dashed var(--cor-borda);
@@ -553,7 +583,12 @@
         color: var(--cor-texto);
       }
 
-      .section-wrap { padding: 60px 0 45px; }
+      /* ==========================================================================
+         4 & 7. COMPONENTE DE CARROSSEL UNIVERSAL (PURO JS)
+         ========================================================================== */
+      .section-wrap {
+        padding: 60px 0 45px;
+      }
 
       .section-header {
         text-align: center;
@@ -579,29 +614,39 @@
         max-width: 1040px;
         margin: 0 auto;
         user-select: none;
+        overflow: hidden;
       }
 
       .carousel-viewport {
         overflow: hidden;
         border-radius: 24px;
-        padding: 12px 0 20px;
+        padding: 16px 0 24px;
         cursor: grab;
+        touch-action: pan-y;
+        position: relative;
       }
 
-      .carousel-viewport.is-dragging { cursor: grabbing; }
+      .carousel-viewport.is-dragging {
+        cursor: grabbing;
+      }
 
       .carousel-track {
         display: flex;
-        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        transition: transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
         gap: 16px;
+        will-change: transform;
       }
 
       .carousel-slide {
-        flex: 0 0 calc(68% - 10px);
-        min-width: calc(68% - 10px);
+        flex: 0 0 clamp(235px, 70vw, 290px);
+        min-width: clamp(235px, 70vw, 290px);
+        box-sizing: border-box;
       }
 
       @media (min-width: 768px) {
+        .carousel-container {
+          overflow: visible;
+        }
         .carousel-slide {
           flex: 0 0 calc(33.333% - 11px);
           min-width: calc(33.333% - 11px);
@@ -613,17 +658,37 @@
         border-radius: 20px;
         overflow: hidden;
         border: 2px solid var(--cor-borda);
-        box-shadow: var(--sombra-card);
+        box-shadow: 0 6px 18px rgba(27, 43, 30, 0.06);
         display: flex;
         flex-direction: column;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
         height: 100%;
+        transform: scale(0.93);
+        opacity: 0.78;
+        transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       }
 
-      .carousel-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.1);
-        border-color: var(--cor-dourado);
+      /* Slide ativo em destaque no centro no celular */
+      .carousel-slide.is-active .carousel-card {
+        transform: scale(1.02);
+        opacity: 1;
+        border-color: var(--cor-vermelho);
+        box-shadow: 0 16px 36px rgba(196, 30, 58, 0.16), 0 4px 14px rgba(0, 0, 0, 0.06);
+      }
+
+      @media (min-width: 768px) {
+        .carousel-card {
+          transform: scale(1);
+          opacity: 1;
+        }
+        .carousel-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 16px 30px rgba(0, 0, 0, 0.1);
+          border-color: var(--cor-dourado);
+        }
+        .carousel-slide.is-active .carousel-card {
+          transform: translateY(-5px);
+          border-color: var(--cor-vermelho);
+        }
       }
 
       .slide-image-wrap {
@@ -634,9 +699,9 @@
         overflow: hidden;
       }
 
-      /* Proporção menor para fotos horizontais dos momentos das crianças caberem perfeitamente */
+      /* Ajuste proporcional para fotos dos momentos das crianças caberem perfeitamente */
       #carousel-kids .slide-image-wrap {
-        padding-top: 67%;
+        padding-top: 68%;
       }
 
       .slide-image-wrap img {
@@ -648,6 +713,11 @@
         object-fit: cover;
         object-position: center 25%;
         display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .carousel-slide.is-active .slide-image-wrap img {
+        transform: scale(1.02);
       }
 
       .slide-caption {
@@ -676,7 +746,7 @@
         align-items: center;
         justify-content: center;
         gap: 16px;
-        margin-top: 20px;
+        margin-top: 16px;
       }
 
       .carousel-btn {
@@ -704,24 +774,132 @@
       .carousel-dots {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 7px;
       }
 
       .carousel-dot {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         border-radius: 9999px;
         background: #E0D4C5;
         border: none;
         cursor: pointer;
-        transition: all 0.3s ease;
+        padding: 0;
+        transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.35s ease, box-shadow 0.35s ease;
       }
 
       .carousel-dot.active {
         width: 26px;
         background: var(--cor-vermelho);
+        box-shadow: 0 2px 8px rgba(196, 30, 58, 0.35);
       }
 
+      /* ==========================================================================
+         CARROSSEL STREAM CONTÍNUO INFINITO SEM PAUSAS (DESENHOS)
+         ========================================================================== */
+      .carousel-stream {
+        overflow: hidden !important;
+      }
+
+      .carousel-stream .carousel-viewport {
+        overflow: hidden;
+        border-radius: 24px;
+        padding: 16px 0 24px;
+        cursor: grab;
+        touch-action: pan-y;
+        position: relative;
+        mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+      }
+
+      .carousel-stream .carousel-viewport.is-dragging {
+        cursor: grabbing;
+      }
+
+      .carousel-stream .carousel-track {
+        display: flex;
+        gap: 0;
+        width: max-content;
+        transition: none !important;
+        will-change: transform;
+      }
+
+      .carousel-stream .carousel-slide {
+        flex: 0 0 clamp(225px, 64vw, 270px) !important;
+        min-width: clamp(225px, 64vw, 270px) !important;
+        margin-right: 16px;
+        box-sizing: border-box;
+      }
+
+      .carousel-stream .carousel-card {
+        background: #FFFFFF;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 2px solid var(--cor-borda);
+        box-shadow: 0 6px 18px rgba(27, 43, 30, 0.07);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transform: scale(1) !important;
+        opacity: 1 !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .carousel-stream .carousel-card:hover {
+        transform: translateY(-4px) !important;
+        border-color: var(--cor-vermelho);
+        box-shadow: 0 14px 28px rgba(196, 30, 58, 0.14);
+      }
+
+      .stream-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 14px;
+      }
+
+      .stream-badge-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #FFFFFF;
+        border: 1.5px solid var(--cor-borda);
+        padding: 7px 18px;
+        border-radius: 9999px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+
+      .stream-pulse-dot {
+        width: 9px;
+        height: 9px;
+        background-color: #10B981;
+        border-radius: 50%;
+        animation: pulseGreenDot 1.8s infinite;
+      }
+
+      @keyframes pulseGreenDot {
+        0% {
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+        }
+      }
+
+      .stream-status-text {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #334155;
+        letter-spacing: 0.2px;
+      }
+
+      /* ==========================================================================
+         5. SEÇÃO "PRA QUEM É?"
+         ========================================================================== */
       .audience-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -783,6 +961,9 @@
         line-height: 1.3;
       }
 
+      /* ==========================================================================
+         6. SEÇÃO "O QUE VEM NO LIVRO"
+         ========================================================================== */
       .what-inside-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -828,9 +1009,14 @@
         transition: transform 0.3s ease;
       }
 
-      .inside-card:hover .inside-img-wrap img { transform: scale(1.05); }
+      .inside-card:hover .inside-img-wrap img {
+        transform: scale(1.05);
+      }
 
-      .inside-content { padding: 16px 12px; }
+      .inside-content {
+        padding: 16px 12px;
+      }
+
       .inside-title {
         font-family: var(--fonte-titulo);
         font-weight: 700;
@@ -850,6 +1036,9 @@
         border-radius: 9999px;
       }
 
+      /* ==========================================================================
+         8. SEÇÃO "TRAÇO CERTO PARA CADA IDADE"
+         ========================================================================== */
       .ages-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -917,6 +1106,9 @@
         object-fit: contain;
       }
 
+      /* ==========================================================================
+         9. SEÇÃO "3 PASSOS"
+         ========================================================================== */
       .steps-wrap {
         display: flex;
         flex-direction: column;
@@ -977,10 +1169,17 @@
       }
 
       @media (min-width: 768px) {
-        .step-arrow { display: block; }
+        .step-arrow {
+          display: block;
+        }
       }
 
-      .offer-section { padding: 60px 0; }
+      /* ==========================================================================
+         10. CARD DE OFERTA
+         ========================================================================== */
+      .offer-section {
+        padding: 60px 0;
+      }
 
       .offer-card {
         background: #FFFFFF;
@@ -995,7 +1194,9 @@
       }
 
       @media (min-width: 768px) {
-        .offer-card { padding: 48px 36px; }
+        .offer-card {
+          padding: 48px 36px;
+        }
       }
 
       .offer-ribbon {
@@ -1115,6 +1316,9 @@
         gap: 6px;
       }
 
+      /* ==========================================================================
+         11. GARANTIA
+         ========================================================================== */
       .guarantee-card {
         background: #FFFFFF;
         max-width: 720px;
@@ -1181,6 +1385,9 @@
         margin-bottom: 16px;
       }
 
+      /* ==========================================================================
+         12. PERGUNTAS FREQUENTES (FAQ ACORDEÃO)
+         ========================================================================== */
       .faq-list {
         max-width: 760px;
         margin: 0 auto;
@@ -1197,7 +1404,9 @@
         transition: border-color 0.2s ease;
       }
 
-      .faq-item.active { border-color: var(--cor-vermelho); }
+      .faq-item.active {
+        border-color: var(--cor-vermelho);
+      }
 
       .faq-question {
         width: 100%;
@@ -1230,7 +1439,9 @@
         transition: transform 0.3s ease;
       }
 
-      .faq-item.active .faq-toggle-icon { transform: rotate(45deg); }
+      .faq-item.active .faq-toggle-icon {
+        transform: rotate(45deg);
+      }
 
       .faq-answer {
         max-height: 0;
@@ -1248,6 +1459,9 @@
         max-height: 180px;
       }
 
+      /* ==========================================================================
+         13. CTA FINAL
+         ========================================================================== */
       .final-cta-section {
         background: linear-gradient(135deg, #B91024 0%, #E6192E 50%, #FF2B44 100%);
         color: #FFFFFF;
@@ -1280,8 +1494,13 @@
         border: 2px solid #FFFBEB;
       }
 
-      .btn-cta-gold:hover { box-shadow: 0 20px 45px rgba(217, 119, 6, 0.5); }
+      .btn-cta-gold:hover {
+        box-shadow: 0 20px 45px rgba(217, 119, 6, 0.5);
+      }
 
+      /* ==========================================================================
+         14. RODAPÉ
+         ========================================================================== */
       .footer-simple {
         background: #1E2530;
         color: #A0A5B5;
@@ -1296,6 +1515,9 @@
         margin-bottom: 8px;
       }
 
+      /* ==========================================================================
+         15. BOTÃO FIXO MOBILE (STICKY BOTTOM BAR)
+         ========================================================================== */
       .sticky-mobile-cta {
         position: fixed;
         bottom: 0;
@@ -1313,10 +1535,16 @@
       }
 
       @media (min-width: 768px) {
-        .sticky-mobile-cta { display: none; }
+        .sticky-mobile-cta {
+          display: none;
+        }
       }
 
-      .sticky-mobile-info { display: flex; flex-direction: column; }
+      .sticky-mobile-info {
+        display: flex;
+        flex-direction: column;
+      }
+
       .sticky-mobile-prod {
         font-family: var(--fonte-titulo);
         font-size: 0.95rem;
@@ -1324,11 +1552,13 @@
         color: var(--cor-texto);
         line-height: 1.1;
       }
+
       .sticky-mobile-price {
         font-size: 1.18rem;
         font-weight: 800;
         color: var(--cor-vermelho);
       }
+
       .sticky-mobile-btn {
         background: linear-gradient(135deg, #FF2B44 0%, var(--cor-vermelho) 100%);
         color: #FFFFFF;
@@ -1343,7 +1573,7 @@
       }
 
       /* ==========================================================================
-         NOTIFICAÇÃO FLUTUANTE DE COMPRA RECENTE (PROVA SOCIAL)
+         16. NOTIFICAÇÃO FLUTUANTE DE COMPRA RECENTE (PROVA SOCIAL)
          ========================================================================== */
       .sales-toast {
         position: fixed;
@@ -1374,7 +1604,7 @@
 
       @media (max-width: 767px) {
         .sales-toast {
-          bottom: 82px;
+          bottom: 82px; /* Posiciona logo acima da barra fixa mobile */
           left: 14px;
           right: 14px;
           width: calc(100% - 28px);
@@ -1503,6 +1733,9 @@
         gap: 3px;
       }
 
+      /* ==========================================================================
+         ANIMAÇÕES SUAVES AO ROLAR (FADE-IN)
+         ========================================================================== */
       .reveal {
         opacity: 0;
         transform: translateY(24px);
@@ -1514,6 +1747,7 @@
         transform: translateY(0);
       }
 
+      /* MODAL DE CHECKOUT */
       .modal-backdrop {
         position: fixed;
         top: 0;
@@ -1547,7 +1781,9 @@
         100% { transform: scale(1); opacity: 1; }
       }
 
-      /* SEÇÃO DE PROVAS SOCIAIS (PS-) */
+      /* ==========================================================================
+         SEÇÃO DE PROVAS SOCIAIS (PREFIXO PS-)
+         ========================================================================== */
       .ps-section {
         background-color: var(--cor-fundo);
         padding: 70px 16px 80px;
@@ -1767,30 +2003,17 @@
 
       .ps-card-author {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 3px;
         width: 100%;
         border-top: 1px solid #F1F5F9;
         padding-top: 12px;
       }
 
-      .ps-card-author .ps-author-avatar {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: var(--cor-dourado-claro);
-        color: #7A5310;
-        font-weight: 800;
-        font-size: 0.95rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-
       .ps-card-author .ps-author-info {
-        text-align: left;
+        text-align: center;
       }
 
       .ps-card-author .ps-author-name {
@@ -2219,12 +2442,326 @@
           background: rgba(0, 0, 0, 0.6);
         }
       }
+
+      /* ==========================================================================
+         SISTEMA DE DESCONTO RELÂMPAGO INTERATIVO (R$ 6,99 + ANIMAÇÃO CELEBRATÓRIA)
+         ========================================================================== */
+      #discount-confetti-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 100000;
+        display: none;
+      }
+
+      /* ==========================================================================
+         ANIMAÇÃO RELÂMPAGO NO MEIO DA TELA (SEM NENHUMA JANELA/BOX - APENAS O TEXTO)
+         ========================================================================== */
+      .flash-discount-overlay {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        z-index: 9999999;
+        pointer-events: none;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(10, 15, 25, 0.72);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+
+      .flash-discount-overlay.is-active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .flash-discount-overlay.is-fading-out {
+        opacity: 0;
+        transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* PALCO 100% TRANSPARENTE - ZERO JANELA, ZERO BORDA, ZERO CARD */
+      .flash-discount-stage {
+        position: relative;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        width: 100%;
+        max-width: 92vw;
+        margin: auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: scale(0.7);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .flash-discount-overlay.is-active .flash-discount-stage {
+        transform: scale(1);
+      }
+
+      .flash-discount-overlay.is-fading-out .flash-discount-stage {
+        transform: scale(1.08);
+        filter: blur(8px);
+        transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .flash-pure-title {
+        font-family: var(--fonte-titulo);
+        font-weight: 800;
+        font-size: clamp(0.95rem, 4.2vw, 1.4rem);
+        color: #F8FAFC;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 0 20px rgba(239, 68, 68, 0.6);
+        margin-bottom: 8px;
+      }
+
+      .flash-vertical-numbers {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+        margin: 2px 0;
+      }
+
+      .flash-old-price-row {
+        position: relative;
+        display: inline-flex;
+        align-items: baseline;
+        justify-content: center;
+        line-height: 0.95;
+        padding: 4px 14px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      .flash-currency-prefix {
+        font-family: var(--fonte-titulo);
+        font-size: clamp(2.2rem, 9.5vw, 3.4rem);
+        font-weight: 800;
+        margin-right: 5px;
+        line-height: 1;
+      }
+
+      .flash-currency-prefix.old {
+        color: #EF4444;
+        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.9), 0 0 25px rgba(239, 68, 68, 0.5);
+      }
+
+      .flash-old-val {
+        font-family: var(--fonte-titulo);
+        font-size: clamp(4.8rem, 21vw, 7.2rem);
+        font-weight: 900;
+        color: #EF4444;
+        line-height: 0.95;
+        letter-spacing: -2px;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 30px rgba(239, 68, 68, 0.6);
+      }
+
+      /* Risco preto cortando no meio do valor R$ 9,99 */
+      .flash-black-slash {
+        position: absolute;
+        top: 50%;
+        left: -4%;
+        width: 0;
+        height: 7px;
+        background: #000000;
+        border-radius: 9999px;
+        transform: translateY(-50%) rotate(-9deg);
+        transform-origin: left center;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 16px rgba(0, 0, 0, 0.9);
+        pointer-events: none;
+        z-index: 10;
+        transition: width 0.32s cubic-bezier(0.12, 0.95, 0.22, 1);
+      }
+
+      .flash-discount-overlay.is-slashed .flash-black-slash {
+        width: 108%;
+      }
+
+      .flash-discount-overlay.is-slashed .flash-old-price-row {
+        opacity: 0.35;
+        animation: cutImpactShake 0.35s ease forwards;
+      }
+
+      @keyframes cutImpactShake {
+        0% { transform: scale(1); }
+        25% { transform: scale(1.05) translate(4px, -2px) rotate(-1deg); }
+        60% { transform: scale(0.96) translate(-3px, 1px) rotate(1deg); }
+        100% { transform: scale(0.92); }
+      }
+
+      /* Novo Valor R$ 6,99 em Verde Gigante Surgindo Logo Abaixo */
+      .flash-new-price-row {
+        position: relative;
+        display: inline-flex;
+        align-items: baseline;
+        justify-content: center;
+        line-height: 0.9;
+        margin-top: 2px;
+        transform: scale(0.35);
+        opacity: 0;
+        transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+      }
+
+      .flash-discount-overlay.is-slashed .flash-new-price-row {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      .flash-currency-prefix.new {
+        color: #10B981;
+        font-size: clamp(2.8rem, 12vw, 4.4rem);
+        text-shadow: 0 4px 22px rgba(0, 0, 0, 0.9), 0 0 35px rgba(16, 185, 129, 0.8);
+      }
+
+      .flash-new-val {
+        font-family: var(--fonte-titulo);
+        font-size: clamp(6.4rem, 28vw, 9.4rem);
+        font-weight: 900;
+        color: #10B981;
+        line-height: 0.9;
+        letter-spacing: -3px;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 0 45px rgba(16, 185, 129, 0.85);
+      }
+
+      /* Texto de Urgência de 30 Minutos (Sem Emojis, Profissional) */
+      .flash-pure-timer {
+        font-family: var(--fonte-titulo);
+        font-size: clamp(0.88rem, 3.8vw, 1.15rem);
+        font-weight: 800;
+        color: #FEF08A;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9), 0 0 16px rgba(254, 240, 138, 0.4);
+        margin-top: 10px;
+        line-height: 1.3;
+      }
+
+      .flash-pure-timer strong {
+        color: #FFFFFF;
+      }
+
+      .flash-pure-timer-digits {
+        color: #F87171;
+        font-weight: 900;
+        font-size: clamp(0.95rem, 4.2vw, 1.25rem);
+        margin-top: 4px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+        letter-spacing: 0.5px;
+      }
+
+
+
+      /* Botão Flutuante Reabrir Desconto no Mobile */
+      .discount-reopen-pill {
+        position: fixed;
+        bottom: 74px;
+        right: 14px;
+        background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+        color: #FFFFFF;
+        border: 2px solid #FFFFFF;
+        border-radius: 9999px;
+        padding: 8px 14px;
+        font-family: var(--fonte-titulo);
+        font-size: 0.82rem;
+        font-weight: 700;
+        box-shadow: 0 6px 18px rgba(5, 150, 105, 0.4);
+        cursor: pointer;
+        z-index: 85;
+        display: none;
+        align-items: center;
+        gap: 6px;
+        animation: discountGiftBounce 2s infinite ease-in-out;
+      }
+
+      .discount-reopen-pill.is-active {
+        display: inline-flex;
+      }
+
+      /* Efeitos Dinâmicos de Desconto Ativo */
+      body.discount-unlocked .hero-price-wrap {
+        position: relative;
+      }
+
+      .discount-flash-badge {
+        display: none;
+      }
+
+      body.discount-unlocked .discount-flash-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: linear-gradient(135deg, #FEF08A 0%, #FDE047 100%);
+        color: #854D0E;
+        font-family: var(--fonte-titulo);
+        font-size: 0.78rem;
+        font-weight: 800;
+        padding: 4px 10px;
+        border-radius: 9999px;
+        border: 1px solid #FACC15;
+        margin-bottom: 6px;
+        animation: discountBounceSmall 1.5s infinite;
+      }
+
+      @keyframes discountBounceSmall {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+      }
+
+      body.discount-unlocked .price-strike-tag {
+        background: #FEF2F2;
+        border-color: #F87171;
+        box-shadow: 0 3px 10px rgba(220, 38, 38, 0.2);
+      }
+
+      body.discount-unlocked .hero-price-highlight {
+        color: var(--cor-verde-escuro);
+        animation: discountPricePulse 1.8s infinite alternate;
+      }
+
+      @keyframes discountPricePulse {
+        0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(5, 150, 105, 0)); }
+        100% { transform: scale(1.03); filter: drop-shadow(0 2px 8px rgba(5, 150, 105, 0.25)); }
+      }
+
+      body.discount-unlocked .offer-card {
+        border-color: #10B981;
+        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.25), 0 10px 20px rgba(0, 0, 0, 0.06);
+      }
+
+      body.discount-unlocked .offer-ribbon {
+        background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+        color: #FFFFFF;
+        box-shadow: 0 8px 20px rgba(5, 150, 105, 0.45);
+      }
+
+      body.discount-unlocked .offer-price-main {
+        color: var(--cor-verde-escuro);
+      }
     </style>
   </head>
   <body>
+    <!-- EFEITO SUTIL DE FLANDRES DE NEVE CAINDO -->
     <canvas id="snow-canvas" aria-hidden="true"></canvas>
 
-    <!-- 1. BARRA DO TOPO -->
+    <!-- CANVAS DE CONFETES NATALINOS CELEBRATÓRIOS (EXPLOSÃO AO LIBERAR R$ 6,99) -->
+    <canvas id="discount-confetti-canvas" aria-hidden="true"></canvas>
+
+    <!-- 1. BARRA DO TOPO (FINA COM CONTADOR REGRESSIVO REAL DE NATAL) -->
     <aside class="top-bar" aria-label="Aviso Especial">
       <span>🎄 Atividades de Natal para imprimir e colorir</span>
       <div class="top-bar-timer" id="natal-countdown" title="Tempo restante até o Natal">
@@ -2232,25 +2769,30 @@
       </div>
     </aside>
 
-    <!-- 2. HERO -->
+    <!-- 2. HERO (PRIMEIRA DOBRA) -->
     <header class="hero-section">
       <div class="container">
+        <!-- Selo pequeno acima do título (sem emoji genérico) -->
         <div class="badge-tag">
           Edição Especial de Natal
         </div>
 
+        <!-- Título grande -->
         <h1 class="hero-title text-balance">
           Livro de Colorir de Natal
         </h1>
 
+        <!-- Subtítulo -->
         <p class="hero-subtitle text-balance">
           +200 desenhos para as crianças se divertirem na ceia e nas férias!
         </p>
 
+        <!-- Frase curta (limpa, sem estrelinhas de IA) -->
         <p class="hero-punchline">
           É só baixar, imprimir e colorir.
         </p>
 
+        <!-- Mockup grande do livro com páginas coloridas ao redor -->
         <div class="mockup-container">
           <img
             src="/assets/aistudio/vvvv_c781b5df.jpeg"
@@ -2265,14 +2807,22 @@
           </div>
         </div>
 
-        <div class="hero-pricing-container">
-          <div class="hero-price-wrap">
-            <div class="price-strike-tag">
+        <!-- Preço em destaque com Avaliações ao lado -->
+        <div class="hero-pricing-container" id="hero-pricing-box">
+          <div class="discount-flash-badge" id="hero-discount-badge">
+            ⚡ PRESENTE DE NATAL LIBERADO: R$ 3,00 OFF (-77%)
+          </div>
+
+          <div class="hero-price-wrap" id="hero-price-wrap">
+            <div class="price-strike-tag" id="hero-strike-box">
               <span class="strike-label">DE</span>
-              <span class="strike-value">R$ 29,90</span>
-              <span class="strike-badge">-67%</span>
+              <span class="strike-value" id="hero-strike-val">R$ 29,90</span>
+              <span class="strike-badge" id="hero-strike-pct">-67%</span>
             </div>
-            <span class="hero-price-highlight">por apenas R$ 9,99</span>
+            <span class="hero-price-highlight" id="hero-price-val">por apenas R$ 9,99</span>
+            <div class="hero-timer-note" id="hero-timer-note" style="display: none; font-size: 0.82rem; font-weight: 800; color: #DC2626; margin-top: 4px;">
+              ⏰ Preço de R$ 6,99 reservado por: <span class="discount-countdown-text">29:59</span>
+            </div>
           </div>
 
           <!-- Badge de avaliações com fotos ultra-realistas ao lado do preço -->
@@ -2315,12 +2865,14 @@
           </div>
         </div>
 
+        <!-- Botão grande de CTA 1 (com Papai Noel natalino) -->
         <div>
           <a href="#comprar" class="btn-cta cta-trigger">
             QUERO MEU LIVRO 🎅
           </a>
         </div>
 
+        <!-- Mini selos de garantia profissionais com SVGs nítidos -->
         <div class="trust-seals-mini">
           <span>
             <svg class="seal-icon-svg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
@@ -2340,7 +2892,7 @@
       </div>
     </header>
 
-    <!-- 3. BENEFÍCIOS (SVGs PROFISSIONAIS) -->
+    <!-- 3. FAIXA DE 4 BENEFÍCIOS RÁPIDOS (SVGs PROFISSIONAIS) -->
     <section class="benefits-strip" aria-label="Benefícios do Livro">
       <div class="container">
         <div class="benefits-grid">
@@ -2380,7 +2932,7 @@
       </div>
     </section>
 
-    <!-- 4. CARROSSEL 1 -->
+    <!-- 4. CARROSSEL 1: "VEJA POR DENTRO" -->
     <section class="section-wrap reveal" id="veja-por-dentro">
       <div class="container">
         <div class="section-header">
@@ -2389,15 +2941,20 @@
           <p class="text-balance">Traços bem definidos e fáceis de colorir que prendem a atenção dos pequenos.</p>
         </div>
 
-        <div class="carousel-container" id="carousel-pages">
+        <div class="carousel-container carousel-stream" id="carousel-pages">
           <div class="carousel-viewport">
-            <div class="carousel-track" id="track-pages"></div>
+            <div class="carousel-track" id="track-pages">
+              <!-- Slides gerados dinamicamente via JS a partir do array CARROSSEL_DESENHOS -->
+            </div>
           </div>
 
-          <div class="carousel-controls">
-            <button class="carousel-btn prev-btn" aria-label="Slide anterior">❮</button>
-            <div class="carousel-dots" id="dots-pages"></div>
-            <button class="carousel-btn next-btn" aria-label="Próximo slide">❯</button>
+          <div class="carousel-controls stream-controls">
+            <button class="carousel-btn prev-btn" aria-label="Voltar desenho">❮</button>
+            <div class="stream-badge-status">
+              <span class="stream-pulse-dot"></span>
+              <span class="stream-status-text">Passando sem parar • Toque para segurar</span>
+            </div>
+            <button class="carousel-btn next-btn" aria-label="Avançar desenho">❯</button>
           </div>
         </div>
       </div>
@@ -2405,7 +2962,7 @@
 
 
 
-    <!-- 6. O QUE VEM NO LIVRO -->
+    <!-- 6. SEÇÃO "O QUE VEM NO LIVRO" (GRADE DE 6 CARDS) -->
     <section class="section-wrap reveal">
       <div class="container">
         <div class="section-header">
@@ -2415,29 +2972,70 @@
         </div>
 
         <div class="what-inside-grid">
+          <!-- Card 1 -->
           <div class="inside-card">
-            <div class="inside-img-wrap"><img src="/src/assets/images/coloring_page_santa_1792843835372.jpg" alt="Papai Noel" /></div>
-            <div class="inside-content"><h3 class="inside-title">Papai Noel</h3><span class="inside-count">+35 desenhos</span></div>
+            <div class="inside-img-wrap">
+              <img src="/src/assets/images/coloring_page_santa_1792843835372.jpg" alt="Desenho do Papai Noel para colorir" loading="lazy" />
+            </div>
+            <div class="inside-content">
+              <h3 class="inside-title">Papai Noel</h3>
+              <span class="inside-count">+35 desenhos</span>
+            </div>
           </div>
+
+          <!-- Card 2 -->
           <div class="inside-card">
-            <div class="inside-img-wrap"><img src="/assets/aistudio/image_8d357aa9.png" alt="Árvores de Natal" /></div>
-            <div class="inside-content"><h3 class="inside-title">Árvores de Natal</h3><span class="inside-count">+35 desenhos</span></div>
+            <div class="inside-img-wrap">
+              <img src="/assets/aistudio/image_8d357aa9.png" alt="Desenho de Árvore de Natal com Crianças para colorir" loading="lazy" />
+            </div>
+            <div class="inside-content">
+              <h3 class="inside-title">Árvores de Natal</h3>
+              <span class="inside-count">+35 desenhos</span>
+            </div>
           </div>
+
+          <!-- Card 3 -->
           <div class="inside-card">
-            <div class="inside-img-wrap"><img src="/assets/aistudio/image_cb626017.png" alt="Renas Fofinhas" /></div>
-            <div class="inside-content"><h3 class="inside-title">Renas Fofinhas</h3><span class="inside-count">+30 desenhos</span></div>
+            <div class="inside-img-wrap">
+              <img src="/assets/aistudio/image_cb626017.png" alt="Desenho de Renas Fofinhas para colorir" loading="lazy" />
+            </div>
+            <div class="inside-content">
+              <h3 class="inside-title">Renas Fofinhas</h3>
+              <span class="inside-count">+30 desenhos</span>
+            </div>
           </div>
+
+          <!-- Card 4 -->
           <div class="inside-card">
-            <div class="inside-img-wrap"><img src="/assets/aistudio/image_30151fb6.png" alt="Guirlandas & Enfeites" /></div>
-            <div class="inside-content"><h3 class="inside-title">Guirlandas & Enfeites</h3><span class="inside-count">+30 desenhos</span></div>
+            <div class="inside-img-wrap">
+              <img src="/assets/aistudio/image_30151fb6.png" alt="Desenho de Guirlanda de Natal para colorir" loading="lazy" />
+            </div>
+            <div class="inside-content">
+              <h3 class="inside-title">Guirlandas & Enfeites</h3>
+              <span class="inside-count">+30 desenhos</span>
+            </div>
           </div>
+
+          <!-- Card 5 -->
           <div class="inside-card">
-            <div class="inside-img-wrap"><img src="/assets/aistudio/image_60d0ca37.png" alt="Doces & Bengalas" /></div>
-            <div class="inside-content"><h3 class="inside-title">Doces & Bengalas</h3><span class="inside-count">+35 desenhos</span></div>
+            <div class="inside-img-wrap">
+              <img src="/assets/aistudio/image_60d0ca37.png" alt="Desenho de Bengalas e Doces de Natal para colorir" loading="lazy" />
+            </div>
+            <div class="inside-content">
+              <h3 class="inside-title">Doces & Bengalas</h3>
+              <span class="inside-count">+35 desenhos</span>
+            </div>
           </div>
+
+          <!-- Card 6 -->
           <div class="inside-card">
-            <div class="inside-img-wrap"><img src="/assets/aistudio/image_ee75d8cd.png" alt="Trenó & Brincadeiras" /></div>
-            <div class="inside-content"><h3 class="inside-title">Trenó & Brincadeiras</h3><span class="inside-count">+35 desenhos</span></div>
+            <div class="inside-img-wrap">
+              <img src="/assets/aistudio/image_ee75d8cd.png" alt="Desenho de Trenó e Brincadeiras na Neve para colorir" loading="lazy" />
+            </div>
+            <div class="inside-content">
+              <h3 class="inside-title">Trenó & Brincadeiras</h3>
+              <span class="inside-count">+35 desenhos</span>
+            </div>
           </div>
         </div>
 
@@ -2449,7 +3047,7 @@
       </div>
     </section>
 
-    <!-- 7. CARROSSEL 2 -->
+    <!-- 7. CARROSSEL 2: "COMO AS CRIANÇAS ADORAM USAR" -->
     <section class="section-wrap reveal" style="background-color: #FFFFFF;">
       <div class="container">
         <div class="section-header">
@@ -2460,18 +3058,21 @@
 
         <div class="carousel-container" id="carousel-kids">
           <div class="carousel-viewport">
-            <div class="carousel-track" id="track-kids"></div>
+            <div class="carousel-track" id="track-kids">
+              <!-- Slides gerados dinamicamente via JS a partir do array CARROSSEL_CRIANCAS -->
+            </div>
           </div>
+
           <div class="carousel-controls">
-            <button class="carousel-btn prev-btn">❮</button>
+            <button class="carousel-btn prev-btn" aria-label="Slide anterior">❮</button>
             <div class="carousel-dots" id="dots-kids"></div>
-            <button class="carousel-btn next-btn">❯</button>
+            <button class="carousel-btn next-btn" aria-label="Próximo slide">❯</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 8. IDADES -->
+    <!-- 8. SEÇÃO "TRAÇO CERTO PARA CADA IDADE" -->
     <section class="section-wrap reveal">
       <div class="container">
         <div class="section-header">
@@ -2486,27 +3087,35 @@
               <span class="age-badge">3 a 5 anos</span>
               <p class="age-desc" style="margin-top: 12px;">Desenhos grandes e contornos simples</p>
             </div>
-            <div class="age-preview-box"><img src="/src/assets/images/coloring_page_reindeer_1792843837266.jpg" alt="3 a 5 anos" /></div>
+            <div class="age-preview-box">
+              <img src="/src/assets/images/coloring_page_reindeer_1792843837266.jpg" alt="Exemplo para 3 a 5 anos" loading="lazy" />
+            </div>
           </div>
+
           <div class="age-card">
             <div>
               <span class="age-badge">6 a 8 anos</span>
               <p class="age-desc" style="margin-top: 12px;">Desenhos médios e cheios de fofura</p>
             </div>
-            <div class="age-preview-box"><img src="/src/assets/images/coloring_page_santa_1792843835372.jpg" alt="6 a 8 anos" /></div>
+            <div class="age-preview-box">
+              <img src="/src/assets/images/coloring_page_santa_1792843835372.jpg" alt="Exemplo para 6 a 8 anos" loading="lazy" />
+            </div>
           </div>
+
           <div class="age-card">
             <div>
               <span class="age-badge">9 a 10 anos</span>
               <p class="age-desc" style="margin-top: 12px;">Mais detalhes para soltar a imaginação</p>
             </div>
-            <div class="age-preview-box"><img src="/src/assets/images/coloring_page_tree_1792843837343.jpg" alt="9 a 10 anos" /></div>
+            <div class="age-preview-box">
+              <img src="/src/assets/images/coloring_page_tree_1792843837343.jpg" alt="Exemplo para 9 a 10 anos" loading="lazy" />
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 9. 3 PASSOS -->
+    <!-- 9. SEÇÃO "3 PASSOS" (LIMPO E SEM EMOJIS GENÉRICOS) -->
     <section class="section-wrap reveal" style="background-color: #FFFFFF;">
       <div class="container">
         <div class="section-header">
@@ -2518,14 +3127,18 @@
         <div class="steps-wrap">
           <div class="step-item">
             <div class="step-number">1</div>
-            <p class="step-text">Compre por apenas R$ 9,99</p>
+            <p class="step-text" id="step-price-text">Compre por apenas R$ 9,99</p>
           </div>
+
           <span class="step-arrow">➔</span>
+
           <div class="step-item">
             <div class="step-number">2</div>
             <p class="step-text">Receba o PDF na hora por e-mail</p>
           </div>
+
           <span class="step-arrow">➔</span>
+
           <div class="step-item">
             <div class="step-number">3</div>
             <p class="step-text">Imprima e comece a colorir</p>
@@ -2534,10 +3147,11 @@
       </div>
     </section>
 
-    <!-- SEÇÃO DE PROVAS SOCIAIS (PRINTS E FOTOS REAIS DE CLIENTES) -->
+    <!-- ==========================================================================
+         SEÇÃO DE PROVAS SOCIAIS (PRINTS E FOTOS REAIS DE CLIENTES)
+         ========================================================================== -->
     <section class="ps-section reveal" id="provas-sociais">
       <div class="ps-container">
-
         <div class="ps-gallery-title-wrap">
           <h2 class="ps-gallery-heading">O que as mães dizem sobre o livro</h2>
           <p class="ps-gallery-sub">Fotos e mensagens reais de famílias que já imprimiram e amaram</p>
@@ -2561,7 +3175,6 @@
                 “Oi! Já imprimi aqui e minha filha já começou a colorir, ela amou! 🥰 As páginas são lindas e muito bem feitas!”
               </p>
               <div class="ps-card-author">
-                <div class="ps-author-avatar">L</div>
                 <div class="ps-author-info">
                   <div class="ps-author-name">Larissa <span>✓</span></div>
                   <div class="ps-author-status">✓ Compra verificada</div>
@@ -2586,7 +3199,6 @@
                 “Cara, já tô aqui com meu sobrinho colorindo as atividades! Ele tá amando! Você mandou umas artes muito boas, parabéns mesmo! 👏”
               </p>
               <div class="ps-card-author">
-                <div class="ps-author-avatar">R</div>
                 <div class="ps-author-info">
                   <div class="ps-author-name">Rafael <span>✓</span></div>
                   <div class="ps-author-status">✓ Compra verificada</div>
@@ -2611,7 +3223,6 @@
                 “Oi! Só passando pra te mostrar como está indo por aqui! 😍 As atividades estão fazendo um sucesso e ele tá amando colorir! Muito obrigada por todo o carinho e dedicação! ❤️”
               </p>
               <div class="ps-card-author">
-                <div class="ps-author-avatar">J</div>
                 <div class="ps-author-info">
                   <div class="ps-author-name">Juliana <span>✓</span></div>
                   <div class="ps-author-status">✓ Compra verificada</div>
@@ -2631,7 +3242,7 @@
 
         <!-- 7. BOTÃO DE CHAMADA PARA AÇÃO (CTA) -->
         <div class="ps-cta-wrap">
-          <a href="#comprar" class="ps-btn-cta cta-trigger">
+          <a href="#comprar" class="ps-btn-cta cta-trigger" id="ps-cta-btn">
             QUERO O MEU AGORA 🎅
           </a>
 
@@ -2657,12 +3268,15 @@
       </div>
     </section>
 
-    <!-- 10. OFERTA -->
+    <!-- 10. CARD DE OFERTA (DESTAQUE MÁXIMO) -->
     <section class="offer-section reveal" id="comprar">
       <div class="container">
-        <div class="offer-card">
-          <div class="offer-ribbon">🎄 OFERTA DE NATAL</div>
+        <div class="offer-card" id="offer-card">
+          <div class="offer-ribbon" id="offer-ribbon">
+            🎄 OFERTA DE NATAL
+          </div>
 
+          <!-- Mockup do livro dentro da oferta -->
           <div class="offer-mockup-thumb">
             <img src="/assets/aistudio/yyyyyy_eb2af8f7.png" alt="Livro de Colorir de Natal - Oferta Especial" loading="lazy" />
           </div>
@@ -2672,27 +3286,49 @@
           </h2>
           <p style="color: var(--cor-texto-suave); font-weight: 700;">Acesso vitalício e ilimitado a todos os +200 desenhos</p>
 
+          <!-- Checklist com checks verdes -->
           <ul class="offer-checklist">
-            <li><span class="check-icon">✓</span><span>Mais de 200 desenhos para colorir em alta resolução</span></li>
-            <li><span class="check-icon">✓</span><span>PDF pronto para imprimir em folha A4 comum</span></li>
-            <li><span class="check-icon">✓</span><span>Use quantas vezes quiser com irmãos e amigos</span></li>
-            <li><span class="check-icon">✓</span><span>Acesso imediato no seu e-mail após aprovação</span></li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span>Mais de 200 desenhos para colorir em alta resolução</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span>PDF pronto para imprimir em folha A4 comum</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span>Use quantas vezes quiser com irmãos e amigos</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span>Acesso imediato no seu e-mail após aprovação</span>
+            </li>
           </ul>
 
-          <div class="offer-price-area">
-            <div class="price-strike-tag" style="margin-bottom: 8px;">
-              <span class="strike-label">DE</span>
-              <span class="strike-value">R$ 29,90</span>
-              <span class="strike-badge">-67% OFF</span>
+          <!-- Preço grande -->
+          <div class="offer-price-area" id="offer-price-area">
+            <div class="discount-flash-badge" id="offer-discount-badge">
+              🎉 PRESENTE SURPRESA LIBERADO: +R$ 3,00 OFF
             </div>
-            <div class="offer-price-main">R$ 9,99</div>
-            <div class="offer-price-sub">Pagamento único, sem mensalidade</div>
+            <div class="price-strike-tag" style="margin-bottom: 8px;" id="offer-strike-box">
+              <span class="strike-label">DE</span>
+              <span class="strike-value" id="offer-strike-val">R$ 29,90</span>
+              <span class="strike-badge" id="offer-strike-pct">-67% OFF</span>
+            </div>
+            <div class="offer-price-main" id="offer-price-val">R$ 9,99</div>
+            <div class="offer-price-sub" id="offer-price-sub">Pagamento único, sem mensalidade</div>
+            <div class="offer-timer-notice" id="offer-timer-notice" style="display: none; font-size: 0.92rem; font-weight: 800; color: #DC2626; margin-top: 8px;">
+              ⚡ Preço de R$ 6,99 reservado por: <span class="discount-countdown-text">29:59</span>
+            </div>
           </div>
 
-          <a href="https://pay.cakto.com.br/mpghbv2_1253895" class="btn-cta cta-trigger" style="width: 100%; max-width: 440px; font-size: 1.35rem; padding: 20px 32px;">
+          <!-- Botão grande de compra CTA (com presente 🎁) -->
+          <a href="https://pay.cakto.com.br/mpghbv2_1253895" class="btn-cta cta-trigger" id="offer-cta-btn" style="width: 100%; max-width: 440px; font-size: 1.35rem; padding: 20px 32px;">
             COMPRAR AGORA 🎁
           </a>
 
+          <!-- Mini selos de segurança abaixo com SVGs profissionais -->
           <div class="security-seals-grid">
             <span>
               <svg class="seal-icon-svg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
@@ -2732,7 +3368,7 @@
       </div>
     </section>
 
-    <!-- 12. FAQ -->
+    <!-- 12. PERGUNTAS FREQUENTES (FAQ ACORDEÃO) -->
     <section class="section-wrap reveal" style="background-color: #FFFFFF;">
       <div class="container">
         <div class="section-header">
@@ -2741,34 +3377,82 @@
           <p>Tudo o que você precisa saber de forma clara e direta.</p>
         </div>
 
-        <div class="faq-list">
+        <div class="faq-list" id="faq-accordion">
+          <!-- Pergunta 1 -->
           <div class="faq-item active">
-            <button class="faq-question"><span>O que vem no livro?</span><span class="faq-toggle-icon">+</span></button>
-            <div class="faq-answer"><p>São mais de 200 desenhos natalinos prontos para imprimir em folha A4 com temas de Papai Noel, Renas, Árvores, Presépio, Bonecos de Neve e muito mais.</p></div>
+            <button class="faq-question">
+              <span>O que vem no livro?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>São mais de 200 desenhos natalinos prontos para imprimir em folha A4 com temas de Papai Noel, Renas, Árvores, Presépio, Bonecos de Neve e muito mais.</p>
+            </div>
           </div>
+
+          <!-- Pergunta 2 -->
           <div class="faq-item">
-            <button class="faq-question"><span>Como recebo o material?</span><span class="faq-toggle-icon">+</span></button>
-            <div class="faq-answer"><p>Assim que o pagamento for aprovado, você recebe o link de download imediatamente no seu e-mail cadastrado.</p></div>
+            <button class="faq-question">
+              <span>Como recebo o material?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Assim que o pagamento for aprovado, você recebe o link de download imediatamente no seu e-mail cadastrado.</p>
+            </div>
           </div>
+
+          <!-- Pergunta 3 -->
           <div class="faq-item">
-            <button class="faq-question"><span>Preciso de impressora especial?</span><span class="faq-toggle-icon">+</span></button>
-            <div class="faq-answer"><p>Não! Qualquer impressora doméstica comum (preto e branco ou colorida) serve perfeitamente com papel sulfite comum.</p></div>
+            <button class="faq-question">
+              <span>Preciso de impressora especial?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Não! Qualquer impressora doméstica comum (preto e branco ou colorida) serve perfeitamente com papel sulfite comum.</p>
+            </div>
           </div>
+
+          <!-- Pergunta 4 -->
           <div class="faq-item">
-            <button class="faq-question"><span>Serve para qual idade?</span><span class="faq-toggle-icon">+</span></button>
-            <div class="faq-answer"><p>Ideal para crianças de 3 a 10 anos, com níveis de traços que vão desde figuras simples até desenhos mais detalhados.</p></div>
+            <button class="faq-question">
+              <span>Serve para qual idade?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Ideal para crianças de 3 a 10 anos, com níveis de traços que vão desde figuras simples até desenhos mais detalhados.</p>
+            </div>
           </div>
+
+          <!-- Pergunta 5 -->
           <div class="faq-item">
-            <button class="faq-question"><span>Posso imprimir mais de uma vez?</span><span class="faq-toggle-icon">+</span></button>
-            <div class="faq-answer"><p>Sim! O arquivo é seu para sempre. Você pode imprimir quantas cópias quiser para seus filhos, primos e alunos.</p></div>
+            <button class="faq-question">
+              <span>Posso imprimir mais de uma vez?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Sim! O arquivo é seu para sempre. Você pode imprimir quantas cópias quiser para seus filhos, primos e alunos.</p>
+            </div>
           </div>
+
+          <!-- Pergunta 6 -->
           <div class="faq-item">
-            <button class="faq-question"><span>O pagamento é único?</span><span class="faq-toggle-icon">+</span></button>
-            <div class="faq-answer"><p>Sim, pagamento único de apenas R$ 9,99. Não existe nenhuma mensalidade ou cobrança recorrente.</p></div>
+            <button class="faq-question">
+              <span>O pagamento é único?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p id="faq-price-text">Sim, pagamento único de apenas R$ 9,99. Não existe nenhuma mensalidade ou cobrança recorrente.</p>
+            </div>
           </div>
+
+          <!-- Pergunta 7 -->
           <div class="faq-item">
-            <button class="faq-question"><span>Como funciona a garantia?</span><span class="faq-toggle-icon">+</span></button>
-            <div class="faq-answer"><p>Você tem 7 dias de garantia total. Se por qualquer motivo não gostar, basta solicitar o reembolso que devolvemos seu dinheiro na hora.</p></div>
+            <button class="faq-question">
+              <span>Como funciona a garantia?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Você tem 7 dias de garantia total. Se por qualquer motivo não gostar, basta solicitar o reembolso que devolvemos seu dinheiro na hora.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -2777,9 +3461,13 @@
     <!-- 13. CTA FINAL -->
     <section class="final-cta-section reveal">
       <div class="container">
-        <h2 class="final-cta-title text-balance">Garanta o Natal das crianças por R$ 9,99</h2>
-        <p class="final-cta-sub text-balance">Baixe agora mesmo e tenha momentos inesquecíveis longe das telas na ceia e nas férias!</p>
-        <a href="#comprar" class="btn-cta btn-cta-gold cta-trigger" style="font-size: 1.35rem; padding: 20px 38px;">
+        <h2 class="final-cta-title text-balance" id="final-cta-title">
+          Garanta o Natal das crianças por R$ 9,99
+        </h2>
+        <p class="final-cta-sub text-balance">
+          Baixe agora mesmo e tenha momentos inesquecíveis longe das telas na ceia e nas férias!
+        </p>
+        <a href="#comprar" class="btn-cta btn-cta-gold cta-trigger" id="final-cta-btn" style="font-size: 1.35rem; padding: 20px 38px;">
           QUERO MEU LIVRO DE NATAL 🎅
         </a>
       </div>
@@ -2792,16 +3480,56 @@
       </div>
     </footer>
 
-    <!-- 15. MOBILE STICKY -->
-    <div class="sticky-mobile-cta" id="sticky-bar">
+    <!-- 15. BOTÃO FIXO MOBILE (STICKY BOTTOM BAR) -->
+    <div class="sticky-mobile-cta" id="sticky-bar" aria-label="Ação rápida de compra">
       <div class="sticky-mobile-info">
         <span class="sticky-mobile-prod">Livro +200 Desenhos</span>
-        <span class="sticky-mobile-price">R$ 9,99</span>
+        <span class="sticky-mobile-price" id="sticky-price-val">R$ 9,99</span>
+        <span class="sticky-mobile-timer" id="sticky-timer-val" style="display: none; font-size: 0.72rem; font-weight: 800; color: #DC2626;">⏰ <span class="discount-countdown-text">29:59</span></span>
       </div>
-      <a href="#comprar" class="sticky-mobile-btn cta-trigger">QUERO MEU LIVRO 🎅</a>
+      <a href="#comprar" class="sticky-mobile-btn cta-trigger" id="sticky-btn-text">
+        QUERO MEU LIVRO 🎅
+      </a>
     </div>
 
-    <!-- MODAL DE CHECKOUT -->
+    <!-- ANIMAÇÃO RELÂMPAGO PURA NO MEIO DA TELA (SEM JANELA/SEM BOX - APENAS TEXTO E CORTE PROFISSIONAL) -->
+    <div id="flash-discount-overlay" class="flash-discount-overlay" aria-hidden="true">
+      <div class="flash-discount-stage">
+        
+        <!-- Texto Superior (Profissional, Sem Emojis) -->
+        <div class="flash-pure-title">
+          DESCONTO EXCLUSIVO LIBERADO
+        </div>
+
+        <!-- Bloco Central: R$ 9,99 Cortado e R$ 6,99 Novo -->
+        <div class="flash-vertical-numbers">
+          
+          <!-- Valor R$ 9,99 em Vermelho sendo Cortado -->
+          <div class="flash-old-price-row">
+            <span class="flash-currency-prefix old">R$</span>
+            <span class="flash-old-val">9,99</span>
+            <!-- Linha preta cortando no meio com precisão -->
+            <div class="flash-black-slash" id="flash-black-slash"></div>
+          </div>
+
+          <!-- Novo Valor R$ 6,99 em Verde Gigante Surgindo Logo Abaixo -->
+          <div class="flash-new-price-row">
+            <span class="flash-currency-prefix new">R$</span>
+            <span class="flash-new-val">6,99</span>
+          </div>
+
+        </div>
+
+        <!-- Texto de Urgência de 30 Minutos (Sem Emojis, Profissional) -->
+        <div class="flash-pure-timer">
+          <strong>VÁLIDO POR 30 MINUTOS</strong>
+          <div class="flash-pure-timer-digits">Tempo restante: <span class="discount-countdown-text">29:59</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MODAL DE CHECKOUT INFORMATIVO (SE O LINK NÃO ESTIVER DEFINIDO) -->
     <div class="modal-backdrop" id="checkout-modal">
       <div class="modal-box">
         <span style="font-size: 2.8rem;">🎁</span>
@@ -2810,7 +3538,7 @@
           Esta página está configurada para direcionar para seu link de pagamento de <strong>R$ 9,99</strong>.
         </p>
         <p style="font-size: 0.88rem; background: #FFF8EE; padding: 12px; border-radius: 12px; border: 1px solid var(--cor-borda); margin-bottom: 22px; color: #7A5310;">
-          Para colocar seu link real da Kiwify, Hotmart ou Eduzz, basta alterar a variável <code>CHECKOUT_URL</code> no script.
+          Para colocar seu link real da Kiwify, Hotmart ou Eduzz, basta alterar a variável <code>CHECKOUT_URL</code> no script deste arquivo.
         </p>
         <button id="modal-close-btn" class="btn-cta" style="width: 100%; padding: 14px 20px; font-size: 1.1rem;">
           Entendido, fechar aviso
@@ -2870,62 +3598,139 @@
       </div>
     </div>
 
+    <!-- ==========================================================================
+         JAVASCRIPT PURO (SEM BIBLIOTECAS EXTERNAS)
+         ========================================================================== */ -->
     <script>
+      /* ==========================================================================
+         🎄 CONFIGURAÇÃO DA PÁGINA (ALTERE AQUI OS SEUS LINKS E IMAGENS)
+         ========================================================================== */
+
+      // 1. LINK DE CHECKOUT (Cakto)
+      // Link direto da página de pagamento:
       const CHECKOUT_URL = "https://pay.cakto.com.br/mpghbv2_1253895"; 
 
+      // 2. IMAGENS DO CARROSSEL 1: "VEJA POR DENTRO" (Páginas do Livro para Colorir)
+      // Você pode trocar as URLs abaixo pelas imagens reais dos seus 40 desenhos:
       const CARROSSEL_DESENHOS = [
-        { titulo: "Papai Noel Alegre", legenda: "Traço grosso e simpático", imagem: "/src/assets/images/coloring_page_santa_1792843835372.jpg" },
-        { titulo: "Bengala Doce Natalina", legenda: "Com laço e estrelinhas mágicas", imagem: "/assets/aistudio/image_60d0ca37.png" },
-        { titulo: "Manhã de Natal em Família", legenda: "Presentes sob a grande árvore", imagem: "/assets/aistudio/image_8d357aa9.png" },
-        { titulo: "Rena no Trenó de Neve", legenda: "Com cachecol e luzes festivas", imagem: "/assets/aistudio/image_ee75d8cd.png" },
-        { titulo: "Pequena Rena do Noel", legenda: "Traço fofo e fácil de pintar", imagem: "/assets/aistudio/image_cb626017.png" },
-        { titulo: "Guirlanda Tradicional", legenda: "Bolas de Natal, estrelas e laço", imagem: "/assets/aistudio/image_30151fb6.png" },
-        { titulo: "Árvore da Estrela Guia", legenda: "Iluminada e cheia de enfeites", imagem: "/assets/aistudio/image_550b47e5.png" },
-        { titulo: "Árvore de Natal Enfeitada", legenda: "Com presentes e estrela", imagem: "/src/assets/images/coloring_page_tree_1792843837343.jpg" },
-        { titulo: "Rena Rodolfo com Sininhos", legenda: "Fácil e divertido de colorir", imagem: "/src/assets/images/coloring_page_reindeer_1792843837266.jpg" }
+        {
+          titulo: "Papai Noel Alegre",
+          legenda: "Traço grosso e simpático",
+          imagem: "/src/assets/images/coloring_page_santa_1792843835372.jpg"
+        },
+        {
+          titulo: "Bengala Doce Natalina",
+          legenda: "Com laço e estrelinhas mágicas",
+          imagem: "/assets/aistudio/image_60d0ca37.png"
+        },
+        {
+          titulo: "Manhã de Natal em Família",
+          legenda: "Presentes sob a grande árvore",
+          imagem: "/assets/aistudio/image_8d357aa9.png"
+        },
+        {
+          titulo: "Rena no Trenó de Neve",
+          legenda: "Com cachecol e luzes festivas",
+          imagem: "/assets/aistudio/image_ee75d8cd.png"
+        },
+        {
+          titulo: "Pequena Rena do Noel",
+          legenda: "Traço fofo e fácil de pintar",
+          imagem: "/assets/aistudio/image_cb626017.png"
+        },
+        {
+          titulo: "Guirlanda Tradicional",
+          legenda: "Bolas de Natal, estrelas e laço",
+          imagem: "/assets/aistudio/image_30151fb6.png"
+        },
+        {
+          titulo: "Árvore da Estrela Guia",
+          legenda: "Iluminada e cheia de enfeites",
+          imagem: "/assets/aistudio/image_550b47e5.png"
+        },
+        {
+          titulo: "Árvore de Natal Enfeitada",
+          legenda: "Com presentes e estrela",
+          imagem: "/src/assets/images/coloring_page_tree_1792843837343.jpg"
+        },
+        {
+          titulo: "Rena Rodolfo com Sininhos",
+          legenda: "Fácil e divertido de colorir",
+          imagem: "/src/assets/images/coloring_page_reindeer_1792843837266.jpg"
+        }
       ];
 
+      // 3. IMAGENS DO CARROSSEL 2: "COMO AS CRIANÇAS ADORAM USAR"
+      // Fotos de momentos reais das crianças colorindo:
       const CARROSSEL_CRIANCAS = [
-        { titulo: "Na mesa da ceia em família", legenda: "Crianças entretidas e sorridentes", imagem: "/assets/aistudio/imagem4_7b71244a.jpeg" },
-        { titulo: "Nas férias escolares de verão", legenda: "Longe das telas e redes sociais", imagem: "/assets/aistudio/verao_63848fd3.jpeg" },
-        { titulo: "Na escolinha ou catequese", legenda: "Trabalho em grupo com amiguinhos", imagem: "/assets/aistudio/escola_fc76e605.jpeg" }
+        {
+          titulo: "Na mesa da ceia em família",
+          legenda: "Crianças entretidas e sorridentes",
+          imagem: "/assets/aistudio/imagem4_7b71244a.jpeg"
+        },
+        {
+          titulo: "Nas férias escolares de verão",
+          legenda: "Longe das telas e redes sociais",
+          imagem: "/assets/aistudio/verao_63848fd3.jpeg"
+        },
+        {
+          titulo: "Na escolinha ou catequese",
+          legenda: "Trabalho em grupo com amiguinhos",
+          imagem: "/assets/aistudio/escola_fc76e605.jpeg"
+        }
       ];
 
+      /* ==========================================================================
+         CONTADOR REGRESSIVO REAL DE NATAL (25 DE DEZEMBRO)
+         ========================================================================== */
       function setupCountdown() {
         const daysEl = document.getElementById('days');
         const hoursEl = document.getElementById('hours');
         const minutesEl = document.getElementById('minutes');
         const secondsEl = document.getElementById('seconds');
+
         function updateTimer() {
           const now = new Date();
           let targetYear = now.getFullYear();
           let christmas = new Date(targetYear, 11, 25, 0, 0, 0);
-          if (now.getTime() > christmas.getTime()) christmas = new Date(targetYear + 1, 11, 25, 0, 0, 0);
+
+          if (now.getTime() > christmas.getTime()) {
+            christmas = new Date(targetYear + 1, 11, 25, 0, 0, 0);
+          }
+
           const diff = christmas.getTime() - now.getTime();
           const d = Math.floor(diff / (1000 * 60 * 60 * 24));
           const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
           const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
           const s = Math.floor((diff % (1000 * 60)) / 1000);
+
           if (daysEl) daysEl.textContent = d;
           if (hoursEl) hoursEl.textContent = String(h).padStart(2, '0');
           if (minutesEl) minutesEl.textContent = String(m).padStart(2, '0');
           if (secondsEl) secondsEl.textContent = String(s).padStart(2, '0');
         }
+
         updateTimer();
         setInterval(updateTimer, 1000);
       }
 
-      function initPureCarousel(containerId, trackId, dotsId, items) {
+      /* ==========================================================================
+         CARROSSEL EM FITA CONTÍNUA INFINITA (STREAM SEM PAUSA, 100% SUAVE E RÁPIDO)
+         ========================================================================== */
+      function initContinuousStream(containerId, trackId, items, speedPxPerSec = 110) {
         const container = document.getElementById(containerId);
         const track = document.getElementById(trackId);
-        const dotsContainer = document.getElementById(dotsId);
-        if (!container || !track || !dotsContainer || !items.length) return;
+        if (!container || !track || !items || !items.length) return;
 
-        track.innerHTML = items.map((item, idx) => `
-          <div class="carousel-slide" data-index="${idx}">
+        const viewport = container.querySelector('.carousel-viewport') || container;
+
+        // Renderiza duas cópias completas idênticas para criar loop contínuo infinito perfeito
+        const doubleItems = [...items, ...items];
+        track.innerHTML = doubleItems.map((item, idx) => `
+          <div class="carousel-slide" data-stream-index="${idx}">
             <div class="carousel-card">
               <div class="slide-image-wrap">
-                <img src="${item.imagem}" alt="${item.titulo}" loading="lazy" />
+                <img src="${item.imagem}" alt="${item.titulo}" loading="eager" referrerpolicy="no-referrer" />
               </div>
               <div class="slide-caption">
                 <h4 class="slide-title">${item.titulo}</h4>
@@ -2935,108 +3740,452 @@
           </div>
         `).join('');
 
-        let currentIndex = 0;
-        let isDragging = false;
-        let startX = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let autoplayTimer = null;
+        let pos = 0;
+        let halfWidth = 0;
+        let isTouching = false;
+        let isHovered = false;
+        let isDraggingMouse = false;
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let dragStartPos = 0;
+        let isScrollingVertical = undefined;
+        let lastTime = performance.now();
 
-        function getMaxIndex() {
-          const isMobile = window.innerWidth < 768;
-          const visibleCount = isMobile ? 1.5 : 3;
-          return Math.max(0, items.length - Math.floor(visibleCount));
+        function measureWidth() {
+          const totalWidth = track.scrollWidth;
+          if (totalWidth > 0) {
+            halfWidth = totalWidth / 2;
+          }
         }
 
-        function updateDots() {
-          const maxIdx = getMaxIndex();
+        // Aguarda imagens/layout carregarem para medir com precisão milimétrica
+        measureWidth();
+        window.addEventListener('resize', measureWidth);
+        window.addEventListener('load', measureWidth);
+        setTimeout(measureWidth, 200);
+        setTimeout(measureWidth, 600);
+        setTimeout(measureWidth, 1500);
+
+        // Loop contínuo com requestAnimationFrame: ZERO pausas, velocidade constante
+        function animateLoop(now) {
+          const dt = Math.min((now - lastTime) / 1000, 0.1);
+          lastTime = now;
+
+          if (!isTouching && !isHovered && !isDraggingMouse && halfWidth > 0) {
+            pos += speedPxPerSec * dt;
+            if (pos >= halfWidth) {
+              pos -= halfWidth;
+            }
+            track.style.transform = `translate3d(${-pos}px, 0, 0)`;
+          }
+
+          requestAnimationFrame(animateLoop);
+        }
+        requestAnimationFrame(animateLoop);
+
+        // Interação Touch no Celular: Pausa ao tocar, permite arrastar, continua sem salto
+        viewport.addEventListener('touchstart', (e) => {
+          if (!e.touches || !e.touches[0]) return;
+          isTouching = true;
+          isScrollingVertical = undefined;
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          dragStartPos = pos;
+        }, { passive: true });
+
+        viewport.addEventListener('touchmove', (e) => {
+          if (!isTouching || !e.touches || !e.touches[0] || halfWidth <= 0) return;
+          const touch = e.touches[0];
+          const diffX = touch.clientX - touchStartX;
+          const diffY = touch.clientY - touchStartY;
+
+          if (isScrollingVertical === undefined) {
+            if (Math.abs(diffX) > 6 || Math.abs(diffY) > 6) {
+              isScrollingVertical = Math.abs(diffY) > Math.abs(diffX);
+            }
+          }
+
+          if (isScrollingVertical === true) {
+            return;
+          }
+
+          if (e.cancelable) e.preventDefault();
+          viewport.classList.add('is-dragging');
+          pos = dragStartPos - diffX;
+          while (pos < 0) pos += halfWidth;
+          while (pos >= halfWidth) pos -= halfWidth;
+          track.style.transform = `translate3d(${-pos}px, 0, 0)`;
+        }, { passive: false });
+
+        viewport.addEventListener('touchend', () => {
+          isTouching = false;
+          isScrollingVertical = undefined;
+          viewport.classList.remove('is-dragging');
+        }, { passive: true });
+
+        viewport.addEventListener('touchcancel', () => {
+          isTouching = false;
+          isScrollingVertical = undefined;
+          viewport.classList.remove('is-dragging');
+        }, { passive: true });
+
+        // Hover e Mouse Drag para Desktop
+        container.addEventListener('mouseenter', () => { isHovered = true; });
+        container.addEventListener('mouseleave', () => {
+          isHovered = false;
+          isDraggingMouse = false;
+          viewport.classList.remove('is-dragging');
+        });
+
+        viewport.addEventListener('mousedown', (e) => {
+          isDraggingMouse = true;
+          touchStartX = e.clientX;
+          dragStartPos = pos;
+          viewport.classList.add('is-dragging');
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          if (!isDraggingMouse || halfWidth <= 0) return;
+          const diffX = e.clientX - touchStartX;
+          pos = dragStartPos - diffX;
+          while (pos < 0) pos += halfWidth;
+          while (pos >= halfWidth) pos -= halfWidth;
+          track.style.transform = `translate3d(${-pos}px, 0, 0)`;
+        });
+
+        window.addEventListener('mouseup', () => {
+          if (isDraggingMouse) {
+            isDraggingMouse = false;
+            viewport.classList.remove('is-dragging');
+          }
+        });
+
+        // Botões de Avanço / Retrocesso Nudge
+        const prevBtn = container.querySelector('.prev-btn');
+        const nextBtn = container.querySelector('.next-btn');
+
+        if (prevBtn) {
+          prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const firstSlide = track.querySelector('.carousel-slide');
+            const step = firstSlide ? firstSlide.offsetWidth + 16 : 260;
+            pos -= step;
+            while (pos < 0) pos += halfWidth;
+            track.style.transform = `translate3d(${-pos}px, 0, 0)`;
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const firstSlide = track.querySelector('.carousel-slide');
+            const step = firstSlide ? firstSlide.offsetWidth + 16 : 260;
+            pos += step;
+            while (pos >= halfWidth) pos -= halfWidth;
+            track.style.transform = `translate3d(${-pos}px, 0, 0)`;
+          });
+        }
+      }
+
+      /* ==========================================================================
+         SISTEMA UNIVERSAL DE CARROSSEL PURO INFINITO (MOBILE-FIRST & AUTOPLAY RÁPIDO)
+         ========================================================================== */
+      function initPureCarousel(containerId, trackId, dotsId, items, autoplayInterval = 1200) {
+        const container = document.getElementById(containerId);
+        const track = document.getElementById(trackId);
+        const dotsContainer = document.getElementById(dotsId);
+        if (!container || !track || !dotsContainer || !items || !items.length) return;
+
+        const viewport = container.querySelector('.carousel-viewport') || container;
+        const N = items.length;
+        const cloneCount = Math.min(3, N);
+
+        // Gera lista com clones nas pontas para permitir loop 100% contínuo e infinito
+        const slidesData = [
+          ...items.slice(-cloneCount).map((item, idx) => ({ ...item, realIndex: N - cloneCount + idx })),
+          ...items.map((item, idx) => ({ ...item, realIndex: idx })),
+          ...items.slice(0, cloneCount).map((item, idx) => ({ ...item, realIndex: idx }))
+        ];
+
+        track.innerHTML = slidesData.map((item, idx) => `
+          <div class="carousel-slide" data-dom-index="${idx}" data-real-index="${item.realIndex}">
+            <div class="carousel-card">
+              <div class="slide-image-wrap">
+                <img src="${item.imagem}" alt="${item.titulo}" loading="lazy" referrerpolicy="no-referrer" />
+              </div>
+              <div class="slide-caption">
+                <h4 class="slide-title">${item.titulo}</h4>
+                <p class="slide-sub">${item.legenda}</p>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        let currentDomIndex = cloneCount;
+        let isTouching = false;
+        let isMouseDown = false;
+        let startX = 0;
+        let startY = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let isScrolling = undefined; // para não travar o scroll vertical no celular
+        let touchStartTime = 0;
+        let autoplayTimer = null;
+        let resumeTimer = null;
+
+        // Renderiza os indicadores (dots) correspondentes aos itens reais
+        function initDots() {
           dotsContainer.innerHTML = '';
-          const totalDots = Math.min(items.length, maxIdx + 1);
-          for (let i = 0; i < totalDots; i++) {
+          for (let i = 0; i < N; i++) {
             const dot = document.createElement('button');
-            dot.className = `carousel-dot ${i === currentIndex ? 'active' : ''}`;
-            dot.setAttribute('aria-label', `Ir para slide ${i + 1}`);
-            dot.addEventListener('click', () => goToSlide(i));
+            dot.className = `carousel-dot ${i === 0 ? 'active' : ''}`;
+            dot.setAttribute('aria-label', `Ir para página ${i + 1}`);
+            dot.addEventListener('click', (e) => {
+              e.preventDefault();
+              goToRealIndex(i);
+            });
             dotsContainer.appendChild(dot);
           }
         }
 
-        function getSlideWidth() {
-          const firstSlide = track.querySelector('.carousel-slide');
-          return firstSlide ? firstSlide.getBoundingClientRect().width + 16 : 300;
+        function updateDots() {
+          const currentReal = ((currentDomIndex - cloneCount) % N + N) % N;
+          const dots = dotsContainer.querySelectorAll('.carousel-dot');
+          dots.forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === currentReal);
+          });
         }
 
-        function goToSlide(index) {
-          const maxIdx = getMaxIndex();
-          if (index < 0) index = maxIdx;
-          if (index > maxIdx) index = 0;
-          currentIndex = index;
-          const slideWidth = getSlideWidth();
-          currentTranslate = -currentIndex * slideWidth;
-          prevTranslate = currentTranslate;
-          track.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
-          track.style.transform = `translateX(${currentTranslate}px)`;
+        function getSlideMetrics() {
+          const slides = track.querySelectorAll('.carousel-slide');
+          if (!slides.length) return { slideW: 280, gap: 16 };
+          const slideW = slides[0].getBoundingClientRect().width;
+          let gap = 16;
+          if (slides.length > 1) {
+            const r0 = slides[0].getBoundingClientRect();
+            const r1 = slides[1].getBoundingClientRect();
+            const diff = r1.left - r0.right;
+            if (diff > 0) gap = diff;
+          }
+          return { slideW, gap };
+        }
+
+        function updatePositions(withAnimation = true) {
+          const { slideW, gap } = getSlideMetrics();
+          const viewportW = viewport.clientWidth;
+          const isMobile = window.innerWidth < 768;
+
+          // No celular, centraliza o slide ativo no centro da tela com folga nas laterais
+          const centerOffset = isMobile ? Math.max(0, (viewportW - slideW) / 2) : 0;
+          const targetX = centerOffset - (currentDomIndex * (slideW + gap));
+
+          currentTranslate = targetX;
+          prevTranslate = targetX;
+
+          if (withAnimation) {
+            track.style.transition = 'transform 0.20s cubic-bezier(0.2, 0.9, 0.3, 1)';
+          } else {
+            track.style.transition = 'none';
+          }
+          track.style.transform = `translateX(${targetX}px)`;
+
+          // Destaque visual do card ativo
+          const slides = track.querySelectorAll('.carousel-slide');
+          slides.forEach((sl, idx) => {
+            sl.classList.toggle('is-active', idx === currentDomIndex);
+          });
+
           updateDots();
         }
 
+        // Loop sem emendas (seamless loop) quando atinge clones nas pontas
+        track.addEventListener('transitionend', () => {
+          if (currentDomIndex >= N + cloneCount) {
+            currentDomIndex = currentDomIndex - N;
+            updatePositions(false);
+          } else if (currentDomIndex < cloneCount) {
+            currentDomIndex = currentDomIndex + N;
+            updatePositions(false);
+          }
+        });
+
+        function goToRealIndex(targetReal) {
+          pauseAutoplay();
+          const currentReal = ((currentDomIndex - cloneCount) % N + N) % N;
+          let diff = targetReal - currentReal;
+          // Caminho mais curto
+          if (diff > N / 2) diff -= N;
+          if (diff < -N / 2) diff += N;
+          currentDomIndex += diff;
+          updatePositions(true);
+          restartAutoplayDelayed(1200);
+        }
+
+        function nextSlide() {
+          currentDomIndex++;
+          updatePositions(true);
+        }
+
+        function prevSlide() {
+          currentDomIndex--;
+          updatePositions(true);
+        }
+
+        // Autoplay super rápido (a cada 0.5s para exibir todos os desenhos em ritmo acelerado)
+        function startAutoplay() {
+          pauseAutoplay();
+          autoplayTimer = setInterval(() => {
+            nextSlide();
+          }, autoplayInterval);
+        }
+
+        function pauseAutoplay() {
+          if (autoplayTimer) {
+            clearInterval(autoplayTimer);
+            autoplayTimer = null;
+          }
+        }
+
+        function restartAutoplayDelayed(delay = 900) {
+          pauseAutoplay();
+          if (resumeTimer) clearTimeout(resumeTimer);
+          resumeTimer = setTimeout(() => {
+            startAutoplay();
+          }, delay);
+        }
+
+        // Botões de navegação
         const prevBtn = container.querySelector('.prev-btn');
         const nextBtn = container.querySelector('.next-btn');
-        if (prevBtn) prevBtn.addEventListener('click', () => { pauseAutoplay(); goToSlide(currentIndex - 1); startAutoplay(); });
-        if (nextBtn) nextBtn.addEventListener('click', () => { pauseAutoplay(); goToSlide(currentIndex + 1); startAutoplay(); });
 
-        const viewport = container.querySelector('.carousel-viewport');
+        if (prevBtn) {
+          prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            prevSlide();
+            restartAutoplayDelayed(1200);
+          });
+        }
 
-        function touchStart(e) {
-          isDragging = true;
-          startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+        if (nextBtn) {
+          nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            nextSlide();
+            restartAutoplayDelayed(1200);
+          });
+        }
+
+        // Touch Gestures específicos e otimizados para Celular
+        viewport.addEventListener('touchstart', (e) => {
+          if (!e.touches || !e.touches[0]) return;
+          isTouching = true;
+          isScrolling = undefined;
+          touchStartTime = Date.now();
+          const touch = e.touches[0];
+          startX = touch.clientX;
+          startY = touch.clientY;
+          track.style.transition = 'none';
+          pauseAutoplay();
+        }, { passive: true });
+
+        viewport.addEventListener('touchmove', (e) => {
+          if (!isTouching || !e.touches || !e.touches[0]) return;
+          const touch = e.touches[0];
+          const diffX = touch.clientX - startX;
+          const diffY = touch.clientY - startY;
+
+          // Se o usuário estiver rolando verticalmente a página, libera o navegador sem travar
+          if (isScrolling === undefined) {
+            if (Math.abs(diffX) > 6 || Math.abs(diffY) > 6) {
+              isScrolling = Math.abs(diffY) >= Math.abs(diffX);
+            }
+          }
+
+          if (isScrolling === true) {
+            return;
+          }
+
+          // Se for arrasto horizontal do carrossel
+          if (e.cancelable) e.preventDefault();
+          viewport.classList.add('is-dragging');
+          track.style.transform = `translateX(${prevTranslate + diffX}px)`;
+        }, { passive: false });
+
+        viewport.addEventListener('touchend', (e) => {
+          if (!isTouching) return;
+          isTouching = false;
+          viewport.classList.remove('is-dragging');
+
+          if (isScrolling === true) {
+            restartAutoplayDelayed(1200);
+            return;
+          }
+
+          const touch = e.changedTouches ? e.changedTouches[0] : null;
+          const endX = touch ? touch.clientX : startX;
+          const diffX = endX - startX;
+          const elapsed = Date.now() - touchStartTime;
+
+          // Detecção de deslize ou flick rápido
+          const isFlick = elapsed < 280 && Math.abs(diffX) > 20;
+          if (diffX < -30 || (isFlick && diffX < -15)) {
+            nextSlide();
+          } else if (diffX > 30 || (isFlick && diffX > 15)) {
+            prevSlide();
+          } else {
+            updatePositions(true);
+          }
+
+          restartAutoplayDelayed(1400);
+        });
+
+        // Mouse Drag (desktop)
+        viewport.addEventListener('mousedown', (e) => {
+          isMouseDown = true;
+          startX = e.clientX;
           viewport.classList.add('is-dragging');
           track.style.transition = 'none';
           pauseAutoplay();
-        }
+        });
 
-        function touchMove(e) {
-          if (!isDragging) return;
-          const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-          const diff = currentX - startX;
-          track.style.transform = `translateX(${prevTranslate + diff}px)`;
-        }
+        window.addEventListener('mousemove', (e) => {
+          if (!isMouseDown) return;
+          const diffX = e.clientX - startX;
+          track.style.transform = `translateX(${prevTranslate + diffX}px)`;
+        });
 
-        function touchEnd(e) {
-          if (!isDragging) return;
-          isDragging = false;
+        window.addEventListener('mouseup', (e) => {
+          if (!isMouseDown) return;
+          isMouseDown = false;
           viewport.classList.remove('is-dragging');
-          const currentX = e.type.includes('mouse') ? e.pageX : (e.changedTouches ? e.changedTouches[0].clientX : startX);
-          const movedBy = currentX - startX;
-          if (movedBy < -50) goToSlide(currentIndex + 1);
-          else if (movedBy > 50) goToSlide(currentIndex - 1);
-          else goToSlide(currentIndex);
-          startAutoplay();
-        }
+          const diffX = e.clientX - startX;
+          if (diffX < -35) {
+            nextSlide();
+          } else if (diffX > 35) {
+            prevSlide();
+          } else {
+            updatePositions(true);
+          }
+          restartAutoplayDelayed(1400);
+        });
 
-        viewport.addEventListener('mousedown', touchStart);
-        window.addEventListener('mousemove', touchMove);
-        window.addEventListener('mouseup', touchEnd);
-        viewport.addEventListener('touchstart', touchStart, { passive: true });
-        viewport.addEventListener('touchmove', touchMove, { passive: true });
-        viewport.addEventListener('touchend', touchEnd);
-
-        function startAutoplay() {
-          pauseAutoplay();
-          autoplayTimer = setInterval(() => goToSlide(currentIndex + 1), 4500);
-        }
-        function pauseAutoplay() {
-          if (autoplayTimer) clearInterval(autoplayTimer);
-        }
-
+        // Pausa no hover (desktop)
         container.addEventListener('mouseenter', pauseAutoplay);
-        container.addEventListener('mouseleave', startAutoplay);
-        window.addEventListener('resize', () => { goToSlide(currentIndex); updateDots(); });
+        container.addEventListener('mouseleave', () => restartAutoplayDelayed(800));
 
-        updateDots();
-        goToSlide(0);
+        // Redimensionamento de tela
+        window.addEventListener('resize', () => {
+          updatePositions(false);
+        });
+
+        // Inicialização
+        initDots();
+        updatePositions(false);
         startAutoplay();
       }
 
+      /* ==========================================================================
+         ACORDEÃO DO FAQ
+         ========================================================================== */
       function setupFaq() {
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
@@ -3044,11 +4193,16 @@
           questionBtn.addEventListener('click', () => {
             const isActive = item.classList.contains('active');
             faqItems.forEach(other => other.classList.remove('active'));
-            if (!isActive) item.classList.add('active');
+            if (!isActive) {
+              item.classList.add('active');
+            }
           });
         });
       }
 
+      /* ==========================================================================
+         GERENCIAMENTO DOS CLIQUES DE CTA E CHECKOUT
+         ========================================================================== */
       function setupCheckoutButtons() {
         const ctaButtons = document.querySelectorAll('.cta-trigger');
         const modal = document.getElementById('checkout-modal');
@@ -3060,11 +4214,22 @@
             if (href === '#comprar') {
               e.preventDefault();
               const offerCard = document.getElementById('comprar');
-              if (offerCard) offerCard.scrollIntoView({ behavior: 'smooth' });
+              if (offerCard) {
+                offerCard.scrollIntoView({ behavior: 'smooth' });
+              }
               return;
             }
+
             e.preventDefault();
             if (CHECKOUT_URL && CHECKOUT_URL !== "https://pay.hotmart.com/SEU_CHECKOUT_AQUI") {
+              const currentValue = document.body.classList.contains('discount-unlocked') ? 6.99 : 9.99;
+              if (typeof fbq === 'function') {
+                fbq('track', 'InitiateCheckout', {
+                  content_name: 'Livro de Colorir de Natal',
+                  value: currentValue,
+                  currency: 'BRL'
+                });
+              }
               window.location.href = CHECKOUT_URL;
             } else {
               if (modal) modal.style.display = 'flex';
@@ -3072,29 +4237,49 @@
           });
         });
 
-        if (modalClose) modalClose.addEventListener('click', () => { if (modal) modal.style.display = 'none'; });
-        if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+        if (modalClose) {
+          modalClose.addEventListener('click', () => {
+            if (modal) modal.style.display = 'none';
+          });
+        }
+
+        if (modal) {
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+          });
+        }
       }
 
+      /* ==========================================================================
+         ANIMAÇÃO DE REVELAÇÃO AO ROLAR A PÁGINA (FADE-IN)
+         ========================================================================== */
       function setupScrollReveal() {
         const reveals = document.querySelectorAll('.reveal');
+
         function checkReveal() {
           const windowHeight = window.innerHeight;
           reveals.forEach(el => {
             const elementTop = el.getBoundingClientRect().top;
-            if (elementTop < windowHeight - 80) el.classList.add('active');
+            if (elementTop < windowHeight - 80) {
+              el.classList.add('active');
+            }
           });
         }
+
         window.addEventListener('scroll', checkReveal, { passive: true });
         checkReveal();
       }
 
+      /* ==========================================================================
+         NEVE SUTIL NO CANVAS
+         ========================================================================== */
       function setupSnowCanvas() {
         const canvas = document.getElementById('snow-canvas');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
+
         const maxFlakes = window.innerWidth < 768 ? 25 : 45;
         const flakes = [];
 
@@ -3128,15 +4313,23 @@
             const f = flakes[i];
             f.y += Math.pow(f.d, 2) + 0.6;
             f.x += Math.sin(angle) * 0.5;
+
             if (f.y > height) {
-              flakes[i] = { x: Math.random() * width, y: -5, r: f.r, d: f.d, opacity: f.opacity };
+              flakes[i] = {
+                x: Math.random() * width,
+                y: -5,
+                r: f.r,
+                d: f.d,
+                opacity: f.opacity
+              };
             }
           }
         }
 
+        let animationFrame;
         function animate() {
           drawFlakes();
-          requestAnimationFrame(animate);
+          animationFrame = requestAnimationFrame(animate);
         }
 
         window.addEventListener('resize', () => {
@@ -3193,6 +4386,7 @@
             e.stopPropagation();
             hideToast();
             isDismissed = true;
+            // Pausa por 40 segundos caso o usuário opte por fechar
             if (nextTimeout) clearTimeout(nextTimeout);
             nextTimeout = setTimeout(() => {
               isDismissed = false;
@@ -3232,14 +4426,18 @@
 
         function scheduleNext() {
           if (nextTimeout) clearTimeout(nextTimeout);
+          // Intervalo orgânico entre 8 e 13 segundos
           const interval = Math.floor(Math.random() * 5000) + 8000;
           nextTimeout = setTimeout(showNext, interval);
         }
 
+        // Primeira notificação aparece 3.5 segundos após carregar a página
         setTimeout(showNext, 3500);
       }
 
-      /* LÓGICA DO LIGHTBOX E CARROSSEL DE PROVAS SOCIAIS (PS-) */
+      /* ==========================================================================
+         LÓGICA DO LIGHTBOX E CARROSSEL DE PROVAS SOCIAIS (PS-)
+         ========================================================================== */
       const PS_ITEMS = [
         {
           src: '/assets/aistudio/social1_fb17f3b3.png',
@@ -3344,16 +4542,347 @@
         }
       }
 
+      /* ==========================================================================
+         SISTEMA DE DESCONTO SURPRESA DE NATAL (R$ 6,99 + ANIMAÇÃO CELEBRATÓRIA)
+         ========================================================================== */
+      function setupDiscountCelebrationSystem() {
+        const confettiCanvas = document.getElementById('discount-confetti-canvas');
+
+        let isUnlocked = false;
+        let countdownTimer = null;
+        const DURATION_SECONDS = 30 * 60; // 30 minutos
+
+        // 1. Toca som de corte rápido de navalha / slash
+        function playSlashCutSound() {
+          try {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return;
+            const ctx = new AudioCtx();
+            if (ctx.state === 'suspended') ctx.resume();
+
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(950, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(110, ctx.currentTime + 0.16);
+            gain.gain.setValueAtTime(0.22, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.16);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(ctx.currentTime);
+            osc.stop(ctx.currentTime + 0.18);
+          } catch (e) {}
+        }
+
+        // Toca sino natalino suave via Web Audio API
+        function playCelebrationChime() {
+          try {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return;
+            const ctx = new AudioCtx();
+            if (ctx.state === 'suspended') ctx.resume();
+            const freqs = [523.25, 659.25, 783.99, 1046.50]; // Acorde Maior Brilhante C5 - E5 - G5 - C6
+            freqs.forEach((freq, idx) => {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = 'triangle';
+              osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.08);
+              gain.gain.setValueAtTime(0, ctx.currentTime + idx * 0.08);
+              gain.gain.linearRampToValueAtTime(0.25, ctx.currentTime + idx * 0.08 + 0.02);
+              gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + idx * 0.08 + 0.55);
+              osc.connect(gain);
+              gain.connect(ctx.destination);
+              osc.start(ctx.currentTime + idx * 0.08);
+              osc.stop(ctx.currentTime + idx * 0.08 + 0.6);
+            });
+          } catch (e) {
+            // Silencioso se bloqueado pelo navegador
+          }
+        }
+
+        // 2. Vibração tátil no celular
+        function triggerHaptic() {
+          if (typeof navigator !== 'undefined' && navigator.vibrate) {
+            try {
+              navigator.vibrate([70, 40, 90]);
+            } catch (e) {}
+          }
+        }
+
+        // 3. Explosão de confetes e estrelas natalinas no canvas
+        function launchConfettiBurst() {
+          if (!confettiCanvas) return;
+          const ctx = confettiCanvas.getContext('2d');
+          confettiCanvas.style.display = 'block';
+          let width = confettiCanvas.width = window.innerWidth;
+          let height = confettiCanvas.height = window.innerHeight;
+
+          const colors = ['#E6192E', '#FF2B44', '#059669', '#10B981', '#F59E0B', '#FBBF24', '#FFFFFF'];
+          const particles = [];
+          const count = window.innerWidth < 768 ? 95 : 150;
+
+          for (let i = 0; i < count; i++) {
+            const angle = Math.random() * Math.PI - Math.PI / 2;
+            const speed = Math.random() * 19 + 7;
+            particles.push({
+              x: width * (0.25 + Math.random() * 0.5),
+              y: height * 0.45,
+              vx: Math.cos(angle) * speed * (Math.random() > 0.5 ? 1 : -1) * 0.85,
+              vy: -Math.abs(Math.sin(angle) * speed) - 5,
+              size: Math.random() * 11 + 6,
+              color: colors[Math.floor(Math.random() * colors.length)],
+              rotation: Math.random() * 360,
+              rotSpeed: (Math.random() - 0.5) * 14,
+              wobble: Math.random() * 10,
+              wobbleSpeed: Math.random() * 0.12 + 0.05,
+              opacity: 1,
+              isStar: Math.random() > 0.65
+            });
+          }
+
+          let startTime = performance.now();
+          function renderConfetti(now) {
+            const elapsed = (now - startTime) / 1000;
+            ctx.clearRect(0, 0, width, height);
+
+            let alive = false;
+            particles.forEach(p => {
+              p.x += p.vx;
+              p.y += p.vy;
+              p.vy += 0.48; // gravidade
+              p.vx *= 0.98; // atrito do ar
+              p.rotation += p.rotSpeed;
+              p.wobble += p.wobbleSpeed;
+
+              if (elapsed > 2.6) {
+                p.opacity = Math.max(0, p.opacity - 0.022);
+              }
+
+              if (p.opacity > 0 && p.y < height + 50) {
+                alive = true;
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate((p.rotation * Math.PI) / 180);
+                ctx.globalAlpha = p.opacity;
+                ctx.fillStyle = p.color;
+
+                if (p.isStar) {
+                  ctx.beginPath();
+                  for (let s = 0; s < 5; s++) {
+                    ctx.lineTo(Math.cos((18 + s * 72) * Math.PI / 180) * p.size, -Math.sin((18 + s * 72) * Math.PI / 180) * p.size);
+                    ctx.lineTo(Math.cos((54 + s * 72) * Math.PI / 180) * (p.size * 0.45), -Math.sin((54 + s * 72) * Math.PI / 180) * (p.size * 0.45));
+                  }
+                  ctx.closePath();
+                  ctx.fill();
+                } else {
+                  const w = p.size;
+                  const h = p.size * 0.48 * Math.cos(p.wobble);
+                  ctx.fillRect(-w / 2, -h / 2, w, Math.max(2, Math.abs(h)));
+                }
+                ctx.restore();
+              }
+            });
+
+            if (alive && elapsed < 5) {
+              requestAnimationFrame(renderConfetti);
+            } else {
+              confettiCanvas.style.display = 'none';
+              ctx.clearRect(0, 0, width, height);
+            }
+          }
+          requestAnimationFrame(renderConfetti);
+        }
+
+        // 4. Timer Regressivo de 30 minutos (Loop Infinito de Urgência)
+        function startDiscountTimer() {
+          let endTime = parseInt(sessionStorage.getItem('desconto_699_endtime') || '0', 10);
+          const now = Date.now();
+
+          if (!endTime || endTime <= now) {
+            endTime = now + (DURATION_SECONDS * 1000);
+            sessionStorage.setItem('desconto_699_endtime', endTime.toString());
+          }
+
+          function tick() {
+            let diff = Math.floor((endTime - Date.now()) / 1000);
+
+            // Reinicia suavemente para 30 minutos se zerar (sempre ativo na prática)
+            if (diff <= 0) {
+              endTime = Date.now() + (DURATION_SECONDS * 1000);
+              sessionStorage.setItem('desconto_699_endtime', endTime.toString());
+              diff = DURATION_SECONDS;
+            }
+
+            const m = Math.floor(diff / 60);
+            const s = diff % 60;
+            const minStr = String(m).padStart(2, '0');
+            const secStr = String(s).padStart(2, '0');
+            const formatted = `${minStr}:${secStr}`;
+
+            // Atualiza todos os textos com classe .discount-countdown-text
+            document.querySelectorAll('.discount-countdown-text').forEach(el => {
+              el.textContent = formatted;
+            });
+          }
+
+          tick();
+          if (countdownTimer) clearInterval(countdownTimer);
+          countdownTimer = setInterval(tick, 1000);
+        }
+
+        // 5. Aplica a mudança de preço para R$ 6,99 em toda a página
+        function applyDiscountDOM() {
+          document.body.classList.add('discount-unlocked');
+
+          // Hero Price
+          const heroStrikeBox = document.getElementById('hero-strike-box');
+          const heroPriceVal = document.getElementById('hero-price-val');
+          const heroTimerNote = document.getElementById('hero-timer-note');
+          if (heroStrikeBox) {
+            heroStrikeBox.innerHTML = `
+              <span class="strike-label">DE</span>
+              <span class="strike-value" style="text-decoration: line-through; color: #94A3B8; font-size: 0.95rem;">R$ 29,90</span>
+              <span style="color: #CBD5E1;">•</span>
+              <span class="strike-value" style="color: #EF4444; text-decoration: line-through; font-weight: 800;">R$ 9,99</span>
+              <span class="strike-badge" style="background: #10B981;">-77% OFF</span>
+            `;
+          }
+          if (heroPriceVal) {
+            heroPriceVal.textContent = "por apenas R$ 6,99";
+          }
+          if (heroTimerNote) heroTimerNote.style.display = "block";
+
+          // 3 Passos
+          const stepPrice = document.getElementById('step-price-text');
+          if (stepPrice) {
+            stepPrice.innerHTML = 'Compre por apenas <strong style="color: #059669;">R$ 6,99</strong>';
+          }
+
+          // Card de Oferta Principal
+          const offerRibbon = document.getElementById('offer-ribbon');
+          const offerDiscountBadge = document.getElementById('offer-discount-badge');
+          const offerStrikeBox = document.getElementById('offer-strike-box');
+          const offerPriceVal = document.getElementById('offer-price-val');
+          const offerPriceSub = document.getElementById('offer-price-sub');
+          const offerTimerNotice = document.getElementById('offer-timer-notice');
+          const offerCtaBtn = document.getElementById('offer-cta-btn');
+
+          if (offerRibbon) offerRibbon.innerHTML = "🎁 OFERTA COM DESCONTO EXTRA (-77%)";
+          if (offerDiscountBadge) offerDiscountBadge.style.display = "inline-flex";
+          if (offerStrikeBox) {
+            offerStrikeBox.innerHTML = `
+              <span class="strike-label">DE</span>
+              <span class="strike-value" style="text-decoration: line-through; color: #94A3B8; font-size: 1rem;">R$ 29,90</span>
+              <span style="color: #CBD5E1;">•</span>
+              <span class="strike-value" style="color: #DC2626; text-decoration: line-through; font-weight: 800;">R$ 9,99</span>
+              <span class="strike-badge" style="background: #059669;">-77% OFF (R$ 6,99)</span>
+            `;
+          }
+          if (offerPriceVal) offerPriceVal.textContent = "R$ 6,99";
+          if (offerPriceSub) offerPriceSub.textContent = "Pagamento único de R$ 6,99, sem mensalidade";
+          if (offerTimerNotice) offerTimerNotice.style.display = "block";
+          if (offerCtaBtn) offerCtaBtn.innerHTML = "COMPRAR POR R$ 6,99 AGORA 🎁";
+
+          // Barra Mobile Fixa (Sticky)
+          const stickyPriceVal = document.getElementById('sticky-price-val');
+          const stickyTimerVal = document.getElementById('sticky-timer-val');
+          const stickyBtnText = document.getElementById('sticky-btn-text');
+          if (stickyPriceVal) {
+            stickyPriceVal.innerHTML = `<span style="font-size: 0.82rem; text-decoration: line-through; opacity: 0.65; margin-right: 4px; color: #64748B;">R$ 9,99</span> <strong style="color: #059669; font-size: 1.25rem;">R$ 6,99</strong>`;
+          }
+          if (stickyTimerVal) stickyTimerVal.style.display = "inline-block";
+          if (stickyBtnText) stickyBtnText.textContent = "QUERO POR R$ 6,99 🎅";
+
+          // CTA Final
+          const finalCtaTitle = document.getElementById('final-cta-title');
+          const finalCtaBtn = document.getElementById('final-cta-btn');
+          if (finalCtaTitle) finalCtaTitle.innerHTML = 'Garanta o Natal das crianças por apenas <span style="color: #059669;">R$ 6,99</span>';
+          if (finalCtaBtn) finalCtaBtn.innerHTML = 'QUERO MEU LIVRO POR R$ 6,99 🎅';
+
+          // FAQ
+          const faqPriceText = document.getElementById('faq-price-text');
+          if (faqPriceText) {
+            faqPriceText.textContent = "Sim, pagamento único de apenas R$ 6,99 com o desconto exclusivo ativado. Não existe nenhuma mensalidade ou cobrança recorrente.";
+          }
+        }
+
+        // 6. Dispara a Animação Rápida Centralizada Exatamente no Meio da Tela (Sem Popup)
+        function triggerCelebrationDiscount(showAnimation = true) {
+          if (isUnlocked) return;
+          isUnlocked = true;
+          sessionStorage.setItem('desconto_699_unlocked', 'true');
+
+          applyDiscountDOM();
+          startDiscountTimer();
+
+          const flashOverlay = document.getElementById('flash-discount-overlay');
+
+          if (showAnimation && flashOverlay) {
+            // Etapa 1: Inicia exibição no centro da tela com 9,99 em vermelho
+            flashOverlay.style.display = 'flex';
+            flashOverlay.classList.remove('is-fading-out', 'is-slashed');
+            void flashOverlay.offsetWidth; // Força reflow para transição suave
+            flashOverlay.classList.add('is-active');
+
+            triggerHaptic();
+
+            // Etapa 2: Aos 320ms, o corte risca o 9,99 em vermelho de lado a lado
+            setTimeout(() => {
+              flashOverlay.classList.add('is-slashed');
+              playSlashCutSound();
+            }, 320);
+
+            // Etapa 3: Aos 480ms, o novo preço 6,99 explode em verde gigante com confetes e sino
+            setTimeout(() => {
+              playCelebrationChime();
+              launchConfettiBurst();
+              triggerHaptic();
+            }, 480);
+
+            // Etapa 4: Aos 3.4s, a apresentação centralizada começa a sumir fluidamente
+            setTimeout(() => {
+              flashOverlay.classList.add('is-fading-out');
+            }, 3400);
+
+            // Etapa 5: Aos 4.0s, remove completamente do display sem exibir nenhuma barra no topo
+            setTimeout(() => {
+              flashOverlay.classList.remove('is-active', 'is-fading-out', 'is-slashed');
+              flashOverlay.style.display = 'none';
+            }, 4050);
+          }
+        }
+
+        // 7. Gatilho ao Descer a Página (Scroll Trigger)
+        // Dispara APENAS quando a pessoa rola a página um pouco mais para baixo (~850px a 1000px)
+        function checkScroll() {
+          if (isUnlocked) return;
+          const scrollY = window.scrollY || window.pageYOffset;
+          const threshold = Math.max(850, Math.min(1200, window.innerHeight * 1.25));
+
+          if (scrollY > threshold) {
+            window.removeEventListener('scroll', checkScroll);
+            triggerCelebrationDiscount(true);
+          }
+        }
+
+        // Adiciona o listener de scroll para acionar exclusivamente ao rolar mais para baixo
+        window.addEventListener('scroll', checkScroll, { passive: true });
+      }
+
+      /* ==========================================================================
+         INICIALIZAÇÃO QUANDO O DOM ESTIVER PRONTO
+         ========================================================================== */
       document.addEventListener('DOMContentLoaded', () => {
         setupCountdown();
-        initPureCarousel('carousel-pages', 'track-pages', 'dots-pages', CARROSSEL_DESENHOS);
-        initPureCarousel('carousel-kids', 'track-kids', 'dots-kids', CARROSSEL_CRIANCAS);
+        initContinuousStream('carousel-pages', 'track-pages', CARROSSEL_DESENHOS, 110);
+        initPureCarousel('carousel-kids', 'track-kids', 'dots-kids', CARROSSEL_CRIANCAS, 1400);
         setupFaq();
         setupCheckoutButtons();
         setupScrollReveal();
         setupSnowCanvas();
         setupSalesNotifications();
         setupSocialProofInteractions();
+        setupDiscountCelebrationSystem();
       });
     </script>
   </body>
