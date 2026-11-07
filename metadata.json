@@ -1,6 +1,6 @@
 {
   "name": "Livro de Colorir de Natal - Página de Vendas",
-  "description": "Página de vendas de alta conversão, responsiva e mobile-first para o produto digital Livro de Colorir de Natal (PDF com +200 desenhos) por R$ 9,99.",
+  "description": "Página de vendas de alta conversão, responsiva e mobile-first para o produto digital Livro de Colorir de Natal (PDF com +200 desenhos) por R$ 10,00.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

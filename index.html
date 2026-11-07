@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Livro de Colorir de Natal - Mais de 200 Desenhos para Imprimir por R$ 9,99</title>
-    <meta name="description" content="Livro de colorir de Natal em PDF para imprimir. Mais de 200 desenhos para entreter as crianças na ceia e nas férias por apenas R$ 9,99. Acesso imediato!" />
-    <meta property="og:title" content="Livro de Colorir de Natal - +200 Desenhos por R$ 9,99" />
+    <title>Livro de Colorir de Natal - Mais de 200 Desenhos para Imprimir por R$ 10,00</title>
+    <meta name="description" content="Livro de colorir de Natal em PDF para imprimir. Mais de 200 desenhos para entreter as crianças na ceia e nas férias por apenas R$ 10,00. Acesso imediato!" />
+    <meta property="og:title" content="Livro de Colorir de Natal - +200 Desenhos por R$ 10,00" />
     <meta property="og:description" content="Baixe, imprima e divirta as crianças na ceia de Natal e nas férias com mais de 200 desenhos encantadores." />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#D62828" />
@@ -2443,323 +2443,11 @@
         }
       }
 
-      /* ==========================================================================
-         SISTEMA DE DESCONTO RELÂMPAGO INTERATIVO (R$ 6,99 + ANIMAÇÃO CELEBRATÓRIA)
-         ========================================================================== */
-      #discount-confetti-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none;
-        z-index: 100000;
-        display: none;
-      }
-
-      /* ==========================================================================
-         ANIMAÇÃO RELÂMPAGO NO MEIO DA TELA (SEM NENHUMA JANELA/BOX - APENAS O TEXTO)
-         ========================================================================== */
-      .flash-discount-overlay {
-        position: fixed;
-        inset: 0;
-        width: 100vw;
-        height: 100vh;
-        height: 100dvh;
-        z-index: 9999999;
-        pointer-events: none;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        background: rgba(10, 15, 25, 0.72);
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-        opacity: 0;
-        transition: opacity 0.35s ease;
-      }
-
-      .flash-discount-overlay.is-active {
-        display: flex;
-        opacity: 1;
-      }
-
-      .flash-discount-overlay.is-fading-out {
-        opacity: 0;
-        transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      /* PALCO 100% TRANSPARENTE - ZERO JANELA, ZERO BORDA, ZERO CARD */
-      .flash-discount-stage {
-        position: relative;
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-        width: 100%;
-        max-width: 92vw;
-        margin: auto;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transform: scale(0.7);
-        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-
-      .flash-discount-overlay.is-active .flash-discount-stage {
-        transform: scale(1);
-      }
-
-      .flash-discount-overlay.is-fading-out .flash-discount-stage {
-        transform: scale(1.08);
-        filter: blur(8px);
-        transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .flash-pure-title {
-        font-family: var(--fonte-titulo);
-        font-weight: 800;
-        font-size: clamp(0.95rem, 4.2vw, 1.4rem);
-        color: #F8FAFC;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 0 20px rgba(239, 68, 68, 0.6);
-        margin-bottom: 8px;
-      }
-
-      .flash-vertical-numbers {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        position: relative;
-        margin: 2px 0;
-      }
-
-      .flash-old-price-row {
-        position: relative;
-        display: inline-flex;
-        align-items: baseline;
-        justify-content: center;
-        line-height: 0.95;
-        padding: 4px 14px;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-      }
-
-      .flash-currency-prefix {
-        font-family: var(--fonte-titulo);
-        font-size: clamp(2.2rem, 9.5vw, 3.4rem);
-        font-weight: 800;
-        margin-right: 5px;
-        line-height: 1;
-      }
-
-      .flash-currency-prefix.old {
-        color: #EF4444;
-        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.9), 0 0 25px rgba(239, 68, 68, 0.5);
-      }
-
-      .flash-old-val {
-        font-family: var(--fonte-titulo);
-        font-size: clamp(4.8rem, 21vw, 7.2rem);
-        font-weight: 900;
-        color: #EF4444;
-        line-height: 0.95;
-        letter-spacing: -2px;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 30px rgba(239, 68, 68, 0.6);
-      }
-
-      /* Risco preto cortando no meio do valor R$ 9,99 */
-      .flash-black-slash {
-        position: absolute;
-        top: 50%;
-        left: -4%;
-        width: 0;
-        height: 7px;
-        background: #000000;
-        border-radius: 9999px;
-        transform: translateY(-50%) rotate(-9deg);
-        transform-origin: left center;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 16px rgba(0, 0, 0, 0.9);
-        pointer-events: none;
-        z-index: 10;
-        transition: width 0.32s cubic-bezier(0.12, 0.95, 0.22, 1);
-      }
-
-      .flash-discount-overlay.is-slashed .flash-black-slash {
-        width: 108%;
-      }
-
-      .flash-discount-overlay.is-slashed .flash-old-price-row {
-        opacity: 0.35;
-        animation: cutImpactShake 0.35s ease forwards;
-      }
-
-      @keyframes cutImpactShake {
-        0% { transform: scale(1); }
-        25% { transform: scale(1.05) translate(4px, -2px) rotate(-1deg); }
-        60% { transform: scale(0.96) translate(-3px, 1px) rotate(1deg); }
-        100% { transform: scale(0.92); }
-      }
-
-      /* Novo Valor R$ 6,99 em Verde Gigante Surgindo Logo Abaixo */
-      .flash-new-price-row {
-        position: relative;
-        display: inline-flex;
-        align-items: baseline;
-        justify-content: center;
-        line-height: 0.9;
-        margin-top: 2px;
-        transform: scale(0.35);
-        opacity: 0;
-        transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
-      }
-
-      .flash-discount-overlay.is-slashed .flash-new-price-row {
-        transform: scale(1);
-        opacity: 1;
-      }
-
-      .flash-currency-prefix.new {
-        color: #10B981;
-        font-size: clamp(2.8rem, 12vw, 4.4rem);
-        text-shadow: 0 4px 22px rgba(0, 0, 0, 0.9), 0 0 35px rgba(16, 185, 129, 0.8);
-      }
-
-      .flash-new-val {
-        font-family: var(--fonte-titulo);
-        font-size: clamp(6.4rem, 28vw, 9.4rem);
-        font-weight: 900;
-        color: #10B981;
-        line-height: 0.9;
-        letter-spacing: -3px;
-        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 0 45px rgba(16, 185, 129, 0.85);
-      }
-
-      /* Texto de Urgência de 30 Minutos (Sem Emojis, Profissional) */
-      .flash-pure-timer {
-        font-family: var(--fonte-titulo);
-        font-size: clamp(0.88rem, 3.8vw, 1.15rem);
-        font-weight: 800;
-        color: #FEF08A;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9), 0 0 16px rgba(254, 240, 138, 0.4);
-        margin-top: 10px;
-        line-height: 1.3;
-      }
-
-      .flash-pure-timer strong {
-        color: #FFFFFF;
-      }
-
-      .flash-pure-timer-digits {
-        color: #F87171;
-        font-weight: 900;
-        font-size: clamp(0.95rem, 4.2vw, 1.25rem);
-        margin-top: 4px;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
-        letter-spacing: 0.5px;
-      }
-
-
-
-      /* Botão Flutuante Reabrir Desconto no Mobile */
-      .discount-reopen-pill {
-        position: fixed;
-        bottom: 74px;
-        right: 14px;
-        background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-        color: #FFFFFF;
-        border: 2px solid #FFFFFF;
-        border-radius: 9999px;
-        padding: 8px 14px;
-        font-family: var(--fonte-titulo);
-        font-size: 0.82rem;
-        font-weight: 700;
-        box-shadow: 0 6px 18px rgba(5, 150, 105, 0.4);
-        cursor: pointer;
-        z-index: 85;
-        display: none;
-        align-items: center;
-        gap: 6px;
-        animation: discountGiftBounce 2s infinite ease-in-out;
-      }
-
-      .discount-reopen-pill.is-active {
-        display: inline-flex;
-      }
-
-      /* Efeitos Dinâmicos de Desconto Ativo */
-      body.discount-unlocked .hero-price-wrap {
-        position: relative;
-      }
-
-      .discount-flash-badge {
-        display: none;
-      }
-
-      body.discount-unlocked .discount-flash-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        background: linear-gradient(135deg, #FEF08A 0%, #FDE047 100%);
-        color: #854D0E;
-        font-family: var(--fonte-titulo);
-        font-size: 0.78rem;
-        font-weight: 800;
-        padding: 4px 10px;
-        border-radius: 9999px;
-        border: 1px solid #FACC15;
-        margin-bottom: 6px;
-        animation: discountBounceSmall 1.5s infinite;
-      }
-
-      @keyframes discountBounceSmall {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-3px); }
-      }
-
-      body.discount-unlocked .price-strike-tag {
-        background: #FEF2F2;
-        border-color: #F87171;
-        box-shadow: 0 3px 10px rgba(220, 38, 38, 0.2);
-      }
-
-      body.discount-unlocked .hero-price-highlight {
-        color: var(--cor-verde-escuro);
-        animation: discountPricePulse 1.8s infinite alternate;
-      }
-
-      @keyframes discountPricePulse {
-        0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(5, 150, 105, 0)); }
-        100% { transform: scale(1.03); filter: drop-shadow(0 2px 8px rgba(5, 150, 105, 0.25)); }
-      }
-
-      body.discount-unlocked .offer-card {
-        border-color: #10B981;
-        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.25), 0 10px 20px rgba(0, 0, 0, 0.06);
-      }
-
-      body.discount-unlocked .offer-ribbon {
-        background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-        color: #FFFFFF;
-        box-shadow: 0 8px 20px rgba(5, 150, 105, 0.45);
-      }
-
-      body.discount-unlocked .offer-price-main {
-        color: var(--cor-verde-escuro);
-      }
     </style>
   </head>
   <body>
     <!-- EFEITO SUTIL DE FLANDRES DE NEVE CAINDO -->
     <canvas id="snow-canvas" aria-hidden="true"></canvas>
-
-    <!-- CANVAS DE CONFETES NATALINOS CELEBRATÓRIOS (EXPLOSÃO AO LIBERAR R$ 6,99) -->
-    <canvas id="discount-confetti-canvas" aria-hidden="true"></canvas>
 
     <!-- 1. BARRA DO TOPO (FINA COM CONTADOR REGRESSIVO REAL DE NATAL) -->
     <aside class="top-bar" aria-label="Aviso Especial">
@@ -2809,20 +2497,8 @@
 
         <!-- Preço em destaque com Avaliações ao lado -->
         <div class="hero-pricing-container" id="hero-pricing-box">
-          <div class="discount-flash-badge" id="hero-discount-badge">
-            ⚡ PRESENTE DE NATAL LIBERADO: R$ 3,00 OFF (-77%)
-          </div>
-
           <div class="hero-price-wrap" id="hero-price-wrap">
-            <div class="price-strike-tag" id="hero-strike-box">
-              <span class="strike-label">DE</span>
-              <span class="strike-value" id="hero-strike-val">R$ 29,90</span>
-              <span class="strike-badge" id="hero-strike-pct">-67%</span>
-            </div>
-            <span class="hero-price-highlight" id="hero-price-val">por apenas R$ 9,99</span>
-            <div class="hero-timer-note" id="hero-timer-note" style="display: none; font-size: 0.82rem; font-weight: 800; color: #DC2626; margin-top: 4px;">
-              ⏰ Preço de R$ 6,99 reservado por: <span class="discount-countdown-text">29:59</span>
-            </div>
+            <span class="hero-price-highlight" id="hero-price-val">por apenas R$ 10,00</span>
           </div>
 
           <!-- Badge de avaliações com fotos ultra-realistas ao lado do preço -->
@@ -3127,7 +2803,7 @@
         <div class="steps-wrap">
           <div class="step-item">
             <div class="step-number">1</div>
-            <p class="step-text" id="step-price-text">Compre por apenas R$ 9,99</p>
+            <p class="step-text" id="step-price-text">Compre por apenas R$ 10,00</p>
           </div>
 
           <span class="step-arrow">➔</span>
@@ -3308,19 +2984,8 @@
 
           <!-- Preço grande -->
           <div class="offer-price-area" id="offer-price-area">
-            <div class="discount-flash-badge" id="offer-discount-badge">
-              🎉 PRESENTE SURPRESA LIBERADO: +R$ 3,00 OFF
-            </div>
-            <div class="price-strike-tag" style="margin-bottom: 8px;" id="offer-strike-box">
-              <span class="strike-label">DE</span>
-              <span class="strike-value" id="offer-strike-val">R$ 29,90</span>
-              <span class="strike-badge" id="offer-strike-pct">-67% OFF</span>
-            </div>
-            <div class="offer-price-main" id="offer-price-val">R$ 9,99</div>
+            <div class="offer-price-main" id="offer-price-val">R$ 10,00</div>
             <div class="offer-price-sub" id="offer-price-sub">Pagamento único, sem mensalidade</div>
-            <div class="offer-timer-notice" id="offer-timer-notice" style="display: none; font-size: 0.92rem; font-weight: 800; color: #DC2626; margin-top: 8px;">
-              ⚡ Preço de R$ 6,99 reservado por: <span class="discount-countdown-text">29:59</span>
-            </div>
           </div>
 
           <!-- Botão grande de compra CTA (com presente 🎁) -->
@@ -3440,7 +3105,7 @@
               <span class="faq-toggle-icon">+</span>
             </button>
             <div class="faq-answer">
-              <p id="faq-price-text">Sim, pagamento único de apenas R$ 9,99. Não existe nenhuma mensalidade ou cobrança recorrente.</p>
+              <p id="faq-price-text">Sim, pagamento único de apenas R$ 10,00. Não existe nenhuma mensalidade ou cobrança recorrente.</p>
             </div>
           </div>
 
@@ -3462,7 +3127,7 @@
     <section class="final-cta-section reveal">
       <div class="container">
         <h2 class="final-cta-title text-balance" id="final-cta-title">
-          Garanta o Natal das crianças por R$ 9,99
+          Garanta o Natal das crianças por R$ 10,00
         </h2>
         <p class="final-cta-sub text-balance">
           Baixe agora mesmo e tenha momentos inesquecíveis longe das telas na ceia e nas férias!
@@ -3484,49 +3149,11 @@
     <div class="sticky-mobile-cta" id="sticky-bar" aria-label="Ação rápida de compra">
       <div class="sticky-mobile-info">
         <span class="sticky-mobile-prod">Livro +200 Desenhos</span>
-        <span class="sticky-mobile-price" id="sticky-price-val">R$ 9,99</span>
-        <span class="sticky-mobile-timer" id="sticky-timer-val" style="display: none; font-size: 0.72rem; font-weight: 800; color: #DC2626;">⏰ <span class="discount-countdown-text">29:59</span></span>
+        <span class="sticky-mobile-price" id="sticky-price-val">R$ 10,00</span>
       </div>
       <a href="#comprar" class="sticky-mobile-btn cta-trigger" id="sticky-btn-text">
         QUERO MEU LIVRO 🎅
       </a>
-    </div>
-
-    <!-- ANIMAÇÃO RELÂMPAGO PURA NO MEIO DA TELA (SEM JANELA/SEM BOX - APENAS TEXTO E CORTE PROFISSIONAL) -->
-    <div id="flash-discount-overlay" class="flash-discount-overlay" aria-hidden="true">
-      <div class="flash-discount-stage">
-        
-        <!-- Texto Superior (Profissional, Sem Emojis) -->
-        <div class="flash-pure-title">
-          DESCONTO EXCLUSIVO LIBERADO
-        </div>
-
-        <!-- Bloco Central: R$ 9,99 Cortado e R$ 6,99 Novo -->
-        <div class="flash-vertical-numbers">
-          
-          <!-- Valor R$ 9,99 em Vermelho sendo Cortado -->
-          <div class="flash-old-price-row">
-            <span class="flash-currency-prefix old">R$</span>
-            <span class="flash-old-val">9,99</span>
-            <!-- Linha preta cortando no meio com precisão -->
-            <div class="flash-black-slash" id="flash-black-slash"></div>
-          </div>
-
-          <!-- Novo Valor R$ 6,99 em Verde Gigante Surgindo Logo Abaixo -->
-          <div class="flash-new-price-row">
-            <span class="flash-currency-prefix new">R$</span>
-            <span class="flash-new-val">6,99</span>
-          </div>
-
-        </div>
-
-        <!-- Texto de Urgência de 30 Minutos (Sem Emojis, Profissional) -->
-        <div class="flash-pure-timer">
-          <strong>VÁLIDO POR 30 MINUTOS</strong>
-          <div class="flash-pure-timer-digits">Tempo restante: <span class="discount-countdown-text">29:59</span></div>
-        </div>
-
-      </div>
     </div>
 
     <!-- MODAL DE CHECKOUT INFORMATIVO (SE O LINK NÃO ESTIVER DEFINIDO) -->
@@ -3535,7 +3162,7 @@
         <span style="font-size: 2.8rem;">🎁</span>
         <h3 style="color: var(--cor-vermelho); margin: 10px 0 6px; font-size: 1.5rem;">Pronto para o Checkout</h3>
         <p style="color: var(--cor-texto-suave); font-weight: 600; margin-bottom: 20px;">
-          Esta página está configurada para direcionar para seu link de pagamento de <strong>R$ 9,99</strong>.
+          Esta página está configurada para direcionar para seu link de pagamento de <strong>R$ 10,00</strong>.
         </p>
         <p style="font-size: 0.88rem; background: #FFF8EE; padding: 12px; border-radius: 12px; border: 1px solid var(--cor-borda); margin-bottom: 22px; color: #7A5310;">
           Para colocar seu link real da Kiwify, Hotmart ou Eduzz, basta alterar a variável <code>CHECKOUT_URL</code> no script deste arquivo.
@@ -4222,11 +3849,10 @@
 
             e.preventDefault();
             if (CHECKOUT_URL && CHECKOUT_URL !== "https://pay.hotmart.com/SEU_CHECKOUT_AQUI") {
-              const currentValue = document.body.classList.contains('discount-unlocked') ? 6.99 : 9.99;
               if (typeof fbq === 'function') {
                 fbq('track', 'InitiateCheckout', {
                   content_name: 'Livro de Colorir de Natal',
-                  value: currentValue,
+                  value: 10.00,
                   currency: 'BRL'
                 });
               }
@@ -4543,336 +4169,14 @@
       }
 
       /* ==========================================================================
-         SISTEMA DE DESCONTO SURPRESA DE NATAL (R$ 6,99 + ANIMAÇÃO CELEBRATÓRIA)
-         ========================================================================== */
-      function setupDiscountCelebrationSystem() {
-        const confettiCanvas = document.getElementById('discount-confetti-canvas');
-
-        let isUnlocked = false;
-        let countdownTimer = null;
-        const DURATION_SECONDS = 30 * 60; // 30 minutos
-
-        // 1. Toca som de corte rápido de navalha / slash
-        function playSlashCutSound() {
-          try {
-            const AudioCtx = window.AudioContext || window.webkitAudioContext;
-            if (!AudioCtx) return;
-            const ctx = new AudioCtx();
-            if (ctx.state === 'suspended') ctx.resume();
-
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.type = 'sawtooth';
-            osc.frequency.setValueAtTime(950, ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(110, ctx.currentTime + 0.16);
-            gain.gain.setValueAtTime(0.22, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.16);
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            osc.start(ctx.currentTime);
-            osc.stop(ctx.currentTime + 0.18);
-          } catch (e) {}
-        }
-
-        // Toca sino natalino suave via Web Audio API
-        function playCelebrationChime() {
-          try {
-            const AudioCtx = window.AudioContext || window.webkitAudioContext;
-            if (!AudioCtx) return;
-            const ctx = new AudioCtx();
-            if (ctx.state === 'suspended') ctx.resume();
-            const freqs = [523.25, 659.25, 783.99, 1046.50]; // Acorde Maior Brilhante C5 - E5 - G5 - C6
-            freqs.forEach((freq, idx) => {
-              const osc = ctx.createOscillator();
-              const gain = ctx.createGain();
-              osc.type = 'triangle';
-              osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.08);
-              gain.gain.setValueAtTime(0, ctx.currentTime + idx * 0.08);
-              gain.gain.linearRampToValueAtTime(0.25, ctx.currentTime + idx * 0.08 + 0.02);
-              gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + idx * 0.08 + 0.55);
-              osc.connect(gain);
-              gain.connect(ctx.destination);
-              osc.start(ctx.currentTime + idx * 0.08);
-              osc.stop(ctx.currentTime + idx * 0.08 + 0.6);
-            });
-          } catch (e) {
-            // Silencioso se bloqueado pelo navegador
-          }
-        }
-
-        // 2. Vibração tátil no celular
-        function triggerHaptic() {
-          if (typeof navigator !== 'undefined' && navigator.vibrate) {
-            try {
-              navigator.vibrate([70, 40, 90]);
-            } catch (e) {}
-          }
-        }
-
-        // 3. Explosão de confetes e estrelas natalinas no canvas
-        function launchConfettiBurst() {
-          if (!confettiCanvas) return;
-          const ctx = confettiCanvas.getContext('2d');
-          confettiCanvas.style.display = 'block';
-          let width = confettiCanvas.width = window.innerWidth;
-          let height = confettiCanvas.height = window.innerHeight;
-
-          const colors = ['#E6192E', '#FF2B44', '#059669', '#10B981', '#F59E0B', '#FBBF24', '#FFFFFF'];
-          const particles = [];
-          const count = window.innerWidth < 768 ? 95 : 150;
-
-          for (let i = 0; i < count; i++) {
-            const angle = Math.random() * Math.PI - Math.PI / 2;
-            const speed = Math.random() * 19 + 7;
-            particles.push({
-              x: width * (0.25 + Math.random() * 0.5),
-              y: height * 0.45,
-              vx: Math.cos(angle) * speed * (Math.random() > 0.5 ? 1 : -1) * 0.85,
-              vy: -Math.abs(Math.sin(angle) * speed) - 5,
-              size: Math.random() * 11 + 6,
-              color: colors[Math.floor(Math.random() * colors.length)],
-              rotation: Math.random() * 360,
-              rotSpeed: (Math.random() - 0.5) * 14,
-              wobble: Math.random() * 10,
-              wobbleSpeed: Math.random() * 0.12 + 0.05,
-              opacity: 1,
-              isStar: Math.random() > 0.65
-            });
-          }
-
-          let startTime = performance.now();
-          function renderConfetti(now) {
-            const elapsed = (now - startTime) / 1000;
-            ctx.clearRect(0, 0, width, height);
-
-            let alive = false;
-            particles.forEach(p => {
-              p.x += p.vx;
-              p.y += p.vy;
-              p.vy += 0.48; // gravidade
-              p.vx *= 0.98; // atrito do ar
-              p.rotation += p.rotSpeed;
-              p.wobble += p.wobbleSpeed;
-
-              if (elapsed > 2.6) {
-                p.opacity = Math.max(0, p.opacity - 0.022);
-              }
-
-              if (p.opacity > 0 && p.y < height + 50) {
-                alive = true;
-                ctx.save();
-                ctx.translate(p.x, p.y);
-                ctx.rotate((p.rotation * Math.PI) / 180);
-                ctx.globalAlpha = p.opacity;
-                ctx.fillStyle = p.color;
-
-                if (p.isStar) {
-                  ctx.beginPath();
-                  for (let s = 0; s < 5; s++) {
-                    ctx.lineTo(Math.cos((18 + s * 72) * Math.PI / 180) * p.size, -Math.sin((18 + s * 72) * Math.PI / 180) * p.size);
-                    ctx.lineTo(Math.cos((54 + s * 72) * Math.PI / 180) * (p.size * 0.45), -Math.sin((54 + s * 72) * Math.PI / 180) * (p.size * 0.45));
-                  }
-                  ctx.closePath();
-                  ctx.fill();
-                } else {
-                  const w = p.size;
-                  const h = p.size * 0.48 * Math.cos(p.wobble);
-                  ctx.fillRect(-w / 2, -h / 2, w, Math.max(2, Math.abs(h)));
-                }
-                ctx.restore();
-              }
-            });
-
-            if (alive && elapsed < 5) {
-              requestAnimationFrame(renderConfetti);
-            } else {
-              confettiCanvas.style.display = 'none';
-              ctx.clearRect(0, 0, width, height);
-            }
-          }
-          requestAnimationFrame(renderConfetti);
-        }
-
-        // 4. Timer Regressivo de 30 minutos (Loop Infinito de Urgência)
-        function startDiscountTimer() {
-          let endTime = parseInt(sessionStorage.getItem('desconto_699_endtime') || '0', 10);
-          const now = Date.now();
-
-          if (!endTime || endTime <= now) {
-            endTime = now + (DURATION_SECONDS * 1000);
-            sessionStorage.setItem('desconto_699_endtime', endTime.toString());
-          }
-
-          function tick() {
-            let diff = Math.floor((endTime - Date.now()) / 1000);
-
-            // Reinicia suavemente para 30 minutos se zerar (sempre ativo na prática)
-            if (diff <= 0) {
-              endTime = Date.now() + (DURATION_SECONDS * 1000);
-              sessionStorage.setItem('desconto_699_endtime', endTime.toString());
-              diff = DURATION_SECONDS;
-            }
-
-            const m = Math.floor(diff / 60);
-            const s = diff % 60;
-            const minStr = String(m).padStart(2, '0');
-            const secStr = String(s).padStart(2, '0');
-            const formatted = `${minStr}:${secStr}`;
-
-            // Atualiza todos os textos com classe .discount-countdown-text
-            document.querySelectorAll('.discount-countdown-text').forEach(el => {
-              el.textContent = formatted;
-            });
-          }
-
-          tick();
-          if (countdownTimer) clearInterval(countdownTimer);
-          countdownTimer = setInterval(tick, 1000);
-        }
-
-        // 5. Aplica a mudança de preço para R$ 6,99 em toda a página
-        function applyDiscountDOM() {
-          document.body.classList.add('discount-unlocked');
-
-          // Hero Price
-          const heroStrikeBox = document.getElementById('hero-strike-box');
-          const heroPriceVal = document.getElementById('hero-price-val');
-          const heroTimerNote = document.getElementById('hero-timer-note');
-          if (heroStrikeBox) {
-            heroStrikeBox.innerHTML = `
-              <span class="strike-label">DE</span>
-              <span class="strike-value" style="text-decoration: line-through; color: #94A3B8; font-size: 0.95rem;">R$ 29,90</span>
-              <span style="color: #CBD5E1;">•</span>
-              <span class="strike-value" style="color: #EF4444; text-decoration: line-through; font-weight: 800;">R$ 9,99</span>
-              <span class="strike-badge" style="background: #10B981;">-77% OFF</span>
-            `;
-          }
-          if (heroPriceVal) {
-            heroPriceVal.textContent = "por apenas R$ 6,99";
-          }
-          if (heroTimerNote) heroTimerNote.style.display = "block";
-
-          // 3 Passos
-          const stepPrice = document.getElementById('step-price-text');
-          if (stepPrice) {
-            stepPrice.innerHTML = 'Compre por apenas <strong style="color: #059669;">R$ 6,99</strong>';
-          }
-
-          // Card de Oferta Principal
-          const offerRibbon = document.getElementById('offer-ribbon');
-          const offerDiscountBadge = document.getElementById('offer-discount-badge');
-          const offerStrikeBox = document.getElementById('offer-strike-box');
-          const offerPriceVal = document.getElementById('offer-price-val');
-          const offerPriceSub = document.getElementById('offer-price-sub');
-          const offerTimerNotice = document.getElementById('offer-timer-notice');
-          const offerCtaBtn = document.getElementById('offer-cta-btn');
-
-          if (offerRibbon) offerRibbon.innerHTML = "🎁 OFERTA COM DESCONTO EXTRA (-77%)";
-          if (offerDiscountBadge) offerDiscountBadge.style.display = "inline-flex";
-          if (offerStrikeBox) {
-            offerStrikeBox.innerHTML = `
-              <span class="strike-label">DE</span>
-              <span class="strike-value" style="text-decoration: line-through; color: #94A3B8; font-size: 1rem;">R$ 29,90</span>
-              <span style="color: #CBD5E1;">•</span>
-              <span class="strike-value" style="color: #DC2626; text-decoration: line-through; font-weight: 800;">R$ 9,99</span>
-              <span class="strike-badge" style="background: #059669;">-77% OFF (R$ 6,99)</span>
-            `;
-          }
-          if (offerPriceVal) offerPriceVal.textContent = "R$ 6,99";
-          if (offerPriceSub) offerPriceSub.textContent = "Pagamento único de R$ 6,99, sem mensalidade";
-          if (offerTimerNotice) offerTimerNotice.style.display = "block";
-          if (offerCtaBtn) offerCtaBtn.innerHTML = "COMPRAR POR R$ 6,99 AGORA 🎁";
-
-          // Barra Mobile Fixa (Sticky)
-          const stickyPriceVal = document.getElementById('sticky-price-val');
-          const stickyTimerVal = document.getElementById('sticky-timer-val');
-          const stickyBtnText = document.getElementById('sticky-btn-text');
-          if (stickyPriceVal) {
-            stickyPriceVal.innerHTML = `<span style="font-size: 0.82rem; text-decoration: line-through; opacity: 0.65; margin-right: 4px; color: #64748B;">R$ 9,99</span> <strong style="color: #059669; font-size: 1.25rem;">R$ 6,99</strong>`;
-          }
-          if (stickyTimerVal) stickyTimerVal.style.display = "inline-block";
-          if (stickyBtnText) stickyBtnText.textContent = "QUERO POR R$ 6,99 🎅";
-
-          // CTA Final
-          const finalCtaTitle = document.getElementById('final-cta-title');
-          const finalCtaBtn = document.getElementById('final-cta-btn');
-          if (finalCtaTitle) finalCtaTitle.innerHTML = 'Garanta o Natal das crianças por apenas <span style="color: #059669;">R$ 6,99</span>';
-          if (finalCtaBtn) finalCtaBtn.innerHTML = 'QUERO MEU LIVRO POR R$ 6,99 🎅';
-
-          // FAQ
-          const faqPriceText = document.getElementById('faq-price-text');
-          if (faqPriceText) {
-            faqPriceText.textContent = "Sim, pagamento único de apenas R$ 6,99 com o desconto exclusivo ativado. Não existe nenhuma mensalidade ou cobrança recorrente.";
-          }
-        }
-
-        // 6. Dispara a Animação Rápida Centralizada Exatamente no Meio da Tela (Sem Popup)
-        function triggerCelebrationDiscount(showAnimation = true) {
-          if (isUnlocked) return;
-          isUnlocked = true;
-          sessionStorage.setItem('desconto_699_unlocked', 'true');
-
-          applyDiscountDOM();
-          startDiscountTimer();
-
-          const flashOverlay = document.getElementById('flash-discount-overlay');
-
-          if (showAnimation && flashOverlay) {
-            // Etapa 1: Inicia exibição no centro da tela com 9,99 em vermelho
-            flashOverlay.style.display = 'flex';
-            flashOverlay.classList.remove('is-fading-out', 'is-slashed');
-            void flashOverlay.offsetWidth; // Força reflow para transição suave
-            flashOverlay.classList.add('is-active');
-
-            triggerHaptic();
-
-            // Etapa 2: Aos 320ms, o corte risca o 9,99 em vermelho de lado a lado
-            setTimeout(() => {
-              flashOverlay.classList.add('is-slashed');
-              playSlashCutSound();
-            }, 320);
-
-            // Etapa 3: Aos 480ms, o novo preço 6,99 explode em verde gigante com confetes e sino
-            setTimeout(() => {
-              playCelebrationChime();
-              launchConfettiBurst();
-              triggerHaptic();
-            }, 480);
-
-            // Etapa 4: Aos 3.4s, a apresentação centralizada começa a sumir fluidamente
-            setTimeout(() => {
-              flashOverlay.classList.add('is-fading-out');
-            }, 3400);
-
-            // Etapa 5: Aos 4.0s, remove completamente do display sem exibir nenhuma barra no topo
-            setTimeout(() => {
-              flashOverlay.classList.remove('is-active', 'is-fading-out', 'is-slashed');
-              flashOverlay.style.display = 'none';
-            }, 4050);
-          }
-        }
-
-        // 7. Gatilho ao Descer a Página (Scroll Trigger)
-        // Dispara APENAS quando a pessoa rola a página um pouco mais para baixo (~850px a 1000px)
-        function checkScroll() {
-          if (isUnlocked) return;
-          const scrollY = window.scrollY || window.pageYOffset;
-          const threshold = Math.max(850, Math.min(1200, window.innerHeight * 1.25));
-
-          if (scrollY > threshold) {
-            window.removeEventListener('scroll', checkScroll);
-            triggerCelebrationDiscount(true);
-          }
-        }
-
-        // Adiciona o listener de scroll para acionar exclusivamente ao rolar mais para baixo
-        window.addEventListener('scroll', checkScroll, { passive: true });
-      }
-
-      /* ==========================================================================
          INICIALIZAÇÃO QUANDO O DOM ESTIVER PRONTO
          ========================================================================== */
       document.addEventListener('DOMContentLoaded', () => {
+        try {
+          sessionStorage.removeItem('desconto_699_unlocked');
+          sessionStorage.removeItem('desconto_699_endtime');
+        } catch (e) {}
+
         setupCountdown();
         initContinuousStream('carousel-pages', 'track-pages', CARROSSEL_DESENHOS, 110);
         initPureCarousel('carousel-kids', 'track-kids', 'dots-kids', CARROSSEL_CRIANCAS, 1400);
@@ -4882,7 +4186,6 @@
         setupSnowCanvas();
         setupSalesNotifications();
         setupSocialProofInteractions();
-        setupDiscountCelebrationSystem();
       });
     </script>
   </body>
