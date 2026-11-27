@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Livro de Colorir de Natal - Mais de 200 Desenhos para Imprimir por R$ 10,00</title>
-    <meta name="description" content="Livro de colorir de Natal em PDF para imprimir. Mais de 200 desenhos para entreter as crianças na ceia e nas férias por apenas R$ 10,00. Acesso imediato!" />
-    <meta property="og:title" content="Livro de Colorir de Natal - +200 Desenhos por R$ 10,00" />
-    <meta property="og:description" content="Baixe, imprima e divirta as crianças na ceia de Natal e nas férias com mais de 200 desenhos encantadores." />
+    <title>Livro de Colorir de Natal - Mais de 300 Desenhos para Imprimir por R$ 10,00</title>
+    <meta name="description" content="Livro de colorir de Natal em PDF para imprimir. Mais de 300 desenhos para entreter as crianças na ceia e nas férias por apenas R$ 10,00. Acesso imediato!" />
+    <meta property="og:title" content="Livro de Colorir de Natal - +300 Desenhos por R$ 10,00" />
+    <meta property="og:description" content="Baixe, imprima e divirta as crianças na ceia de Natal e nas férias com mais de 300 desenhos encantadores." />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#D62828" />
 
@@ -30,6 +30,12 @@
         --cor-dourado: #F59E0B;
         --cor-dourado-escuro: #D97706;
         --cor-dourado-claro: #FEF3C7;
+        --cor-azul-inverno: #15437A;
+        --cor-azul-noite: #09203F;
+        --cor-azul-royal: #1D4ED8;
+        --cor-azul-neve: #E0F2FE;
+        --cor-azul-gelo: #EFF6FF;
+        --cor-azul-borda: #BFDBFE;
         --cor-fundo: #FFFBF5;
         --cor-card: #FFFFFF;
         --cor-texto: #1E2530;
@@ -183,10 +189,10 @@
       }
 
       /* ==========================================================================
-         1. BARRA DO TOPO (FINA COM CONTADOR REGRESSIVO)
+         1. BARRA DO TOPO (VERMELHO NATALINO COM CONTADOR REGRESSIVO)
          ========================================================================== */
       .top-bar {
-        background: linear-gradient(90deg, #065F46 0%, #059669 50%, #065F46 100%);
+        background: linear-gradient(90deg, #B91024 0%, #E6192E 50%, #B91024 100%);
         color: #FFFFFF;
         padding: 10px 16px;
         font-size: 0.9rem;
@@ -201,7 +207,7 @@
         justify-content: center;
         flex-wrap: wrap;
         gap: 8px;
-        box-shadow: 0 4px 16px rgba(6, 95, 70, 0.25);
+        box-shadow: 0 4px 16px rgba(185, 16, 36, 0.28);
       }
 
       .top-bar-timer {
@@ -266,7 +272,7 @@
 
       .hero-punchline {
         font-size: 1.08rem;
-        color: var(--cor-verde-escuro);
+        color: var(--cor-vermelho-escuro);
         font-weight: 800;
         margin-bottom: 26px;
       }
@@ -281,7 +287,7 @@
       .mockup-img {
         width: 100%;
         height: auto;
-        aspect-ratio: 3 / 2;
+        aspect-ratio: 16 / 9;
         object-fit: cover;
         border-radius: 22px;
         box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.22);
@@ -1240,8 +1246,8 @@
       }
 
       .offer-mockup-thumb {
-        max-width: 320px;
-        aspect-ratio: 3 / 2;
+        max-width: 340px;
+        aspect-ratio: 16 / 9;
         margin: 20px auto 16px;
         border-radius: 18px;
         overflow: hidden;
@@ -1483,23 +1489,28 @@
       }
 
       /* ==========================================================================
-         13. CTA FINAL
+         13. CTA FINAL (AZUL INVERNAL COM NEVES CAINDO)
          ========================================================================== */
       .final-cta-section {
-        background: linear-gradient(135deg, #B91024 0%, #E6192E 50%, #FF2B44 100%);
+        background: linear-gradient(135deg, #09203F 0%, #15437A 52%, #0B284F 100%);
         color: #FFFFFF;
-        padding: 70px 0;
+        padding: 74px 0;
         text-align: center;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 -10px 30px rgba(185, 16, 36, 0.15);
+        box-shadow: 0 -10px 30px rgba(9, 32, 63, 0.22);
+      }
+
+      .final-cta-section .container {
+        position: relative;
+        z-index: 2;
       }
 
       .final-cta-title {
         font-size: clamp(2rem, 5.5vw, 3.2rem);
         margin-bottom: 12px;
         color: #FFFFFF;
-        text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
       }
 
       .final-cta-sub {
@@ -1507,7 +1518,7 @@
         font-weight: 600;
         max-width: 580px;
         margin: 0 auto 30px;
-        opacity: 0.95;
+        color: #DCEEFF;
       }
 
       .btn-cta-gold {
@@ -1519,6 +1530,314 @@
 
       .btn-cta-gold:hover {
         box-shadow: 0 20px 45px rgba(217, 119, 6, 0.5);
+      }
+
+      .btn-cta-green {
+        background: linear-gradient(135deg, #10B981 0%, var(--cor-verde) 55%, var(--cor-verde-escuro) 100%);
+        box-shadow: 0 14px 30px -4px rgba(5, 150, 105, 0.42), 0 6px 14px rgba(5, 150, 105, 0.25);
+      }
+
+      .btn-cta-green:hover {
+        box-shadow: 0 22px 42px -6px rgba(5, 150, 105, 0.52), 0 8px 18px rgba(5, 150, 105, 0.32);
+      }
+
+      /* ==========================================================================
+         SEPARAÇÃO CROMÁTICA DAS SEÇÕES: VERMELHO / AZUL (COM NEVE) / VERDE
+         ========================================================================== */
+      .theme-green {
+        background: linear-gradient(180deg, #F2FAF6 0%, #EAF7F0 100%);
+        border-top: 2px solid #D1FAE5;
+        border-bottom: 2px solid #D1FAE5;
+      }
+
+      .theme-green .badge-tag {
+        background: #D1FAE5;
+        color: #065F46;
+        border: 1.5px solid rgba(5, 150, 105, 0.35);
+      }
+
+      .theme-green .section-header h2 {
+        color: #065F46;
+      }
+
+      .theme-green .section-header p {
+        color: #047857;
+      }
+
+      .benefits-strip.theme-green {
+        background: linear-gradient(180deg, #F2FAF6 0%, #EAF7F0 100%);
+        border-top: 2px dashed #A7F3D0;
+        border-bottom: 2px dashed #A7F3D0;
+      }
+
+      .benefits-strip.theme-green .benefit-item {
+        background: #FFFFFF;
+        border: 1.5px solid #A7F3D0;
+      }
+
+      .benefits-strip.theme-green .benefit-item:hover {
+        box-shadow: 0 12px 24px -4px rgba(5, 150, 105, 0.16);
+      }
+
+      .benefits-strip.theme-green .benefit-icon-svg {
+        stroke: #059669;
+      }
+
+      .benefits-strip.theme-green .benefit-title {
+        color: #064E3B;
+      }
+
+      .theme-green .inside-card {
+        border-color: #A7F3D0;
+        box-shadow: 0 10px 24px -6px rgba(5, 150, 105, 0.12);
+      }
+
+      .theme-green .inside-card:hover {
+        border-color: #059669;
+        box-shadow: 0 18px 34px -8px rgba(5, 150, 105, 0.24);
+      }
+
+      .theme-green .inside-count {
+        background: #D1FAE5;
+        color: #065F46;
+      }
+
+      .theme-green .age-card {
+        border-color: #A7F3D0;
+        box-shadow: 0 10px 24px -6px rgba(5, 150, 105, 0.12);
+      }
+
+      .theme-green .age-card:hover {
+        border-color: #059669;
+      }
+
+      .theme-green .age-badge {
+        background: linear-gradient(135deg, #059669 0%, #065F46 100%);
+      }
+
+      .theme-green .age-preview-box {
+        border-color: #6EE7B7;
+        background: #F7FCF9;
+      }
+
+      .theme-green .guarantee-card {
+        border-color: #A7F3D0;
+        box-shadow: 0 14px 30px -6px rgba(5, 150, 105, 0.14);
+      }
+
+      .theme-green .guarantee-content h3 {
+        color: #065F46;
+      }
+
+      .theme-red {
+        background: linear-gradient(180deg, #FFFFFF 0%, #FFF7F8 100%);
+        border-top: 2px solid #FFE4E6;
+        border-bottom: 2px solid #FFE4E6;
+      }
+
+      .theme-red .badge-tag {
+        background: #FFE4E6;
+        color: #B91024;
+        border: 1.5px solid rgba(230, 25, 46, 0.35);
+      }
+
+      .theme-red .section-header h2 {
+        color: #B91024;
+      }
+
+      .theme-red .carousel-card {
+        border-color: #FECDD3;
+      }
+
+      .theme-red .slide-caption {
+        border-top-color: #FFE4E6;
+      }
+
+      .theme-red .slide-sub {
+        color: #B91024;
+      }
+
+      .theme-red .carousel-slide.is-active .carousel-card {
+        border-color: var(--cor-vermelho);
+        box-shadow: 0 16px 36px rgba(230, 25, 46, 0.18), 0 4px 14px rgba(0, 0, 0, 0.06);
+      }
+
+      .offer-section.theme-red {
+        background: linear-gradient(180deg, #FFF5F6 0%, #FFFBF5 100%);
+      }
+
+      .ps-section.theme-red {
+        background: linear-gradient(180deg, #FFFBF5 0%, #FFF5F6 100%);
+        border-top: 2px solid #FFE4E6;
+        border-bottom: none;
+      }
+
+      .ps-section.theme-red .ps-gallery-heading {
+        color: #B91024;
+      }
+
+      .theme-blue-snow {
+        position: relative;
+        background: linear-gradient(180deg, #09203F 0%, #15437A 52%, #0B284F 100%);
+        color: #FFFFFF;
+        overflow: hidden;
+      }
+
+      .theme-blue-snow .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .blue-snow-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .theme-blue-snow .badge-tag {
+        background: rgba(255, 255, 255, 0.14);
+        color: #E0F2FE;
+        border: 1.5px solid rgba(186, 230, 253, 0.5);
+        backdrop-filter: blur(4px);
+      }
+
+      .theme-blue-snow .section-header h2 {
+        color: #FFFFFF;
+        text-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+      }
+
+      .theme-blue-snow .section-header p {
+        color: #DCEEFF;
+      }
+
+      .theme-blue-snow .carousel-stream .carousel-card {
+        border-color: #BFDBFE;
+        box-shadow: 0 14px 32px rgba(4, 18, 38, 0.35);
+      }
+
+      .theme-blue-snow .carousel-stream .carousel-card:hover {
+        border-color: #38BDF8;
+        box-shadow: 0 18px 36px rgba(56, 189, 248, 0.28);
+      }
+
+      .theme-blue-snow .slide-caption {
+        border-top-color: #E0F2FE;
+      }
+
+      .theme-blue-snow .slide-title {
+        color: #0B2545;
+      }
+
+      .theme-blue-snow .slide-sub {
+        color: #0369A1;
+      }
+
+      .theme-blue-snow .carousel-btn {
+        background: rgba(255, 255, 255, 0.94);
+        color: #0F4C81;
+        border-color: #BAE6FD;
+        box-shadow: 0 6px 16px rgba(4, 18, 38, 0.28);
+      }
+
+      .theme-blue-snow .carousel-btn:hover {
+        background: #38BDF8;
+        color: #09203F;
+        border-color: #FFFFFF;
+      }
+
+      .theme-blue-snow .stream-badge-status {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(186, 230, 253, 0.45);
+        backdrop-filter: blur(4px);
+      }
+
+      .theme-blue-snow .stream-pulse-dot {
+        background-color: #38BDF8;
+        animation: pulseBlueDot 1.8s infinite;
+      }
+
+      @keyframes pulseBlueDot {
+        0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.75); }
+        70% { box-shadow: 0 0 0 8px rgba(56, 189, 248, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+      }
+
+      .theme-blue-snow .stream-status-text {
+        color: #F0F9FF;
+      }
+
+      .theme-blue-snow .step-item {
+        border-color: #BFDBFE;
+        box-shadow: 0 14px 32px rgba(4, 18, 38, 0.3);
+      }
+
+      .theme-blue-snow .step-number {
+        background: linear-gradient(135deg, #0284C7 0%, #1D4ED8 100%);
+        box-shadow: 0 6px 14px rgba(2, 132, 199, 0.38);
+      }
+
+      .theme-blue-snow .step-text {
+        color: #0B2545;
+      }
+
+      .theme-blue-snow .step-arrow {
+        color: #7DD3FC;
+        text-shadow: 0 2px 10px rgba(125, 211, 252, 0.35);
+      }
+
+      .theme-blue-light {
+        position: relative;
+        background: linear-gradient(180deg, #EFF6FF 0%, #DBEAFE 100%);
+        border-top: 2px solid #BFDBFE;
+        overflow: hidden;
+      }
+
+      .theme-blue-light .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .theme-blue-light .badge-tag {
+        background: #FFFFFF;
+        color: #1D4ED8;
+        border: 1.5px solid #93C5FD;
+      }
+
+      .theme-blue-light .section-header h2 {
+        color: #0F3460;
+      }
+
+      .theme-blue-light .section-header p {
+        color: #1E40AF;
+      }
+
+      .theme-blue-light .faq-item {
+        border-color: #BFDBFE;
+        box-shadow: 0 6px 18px rgba(29, 78, 216, 0.06);
+      }
+
+      .theme-blue-light .faq-item.active {
+        border-color: #2563EB;
+      }
+
+      .theme-blue-light .faq-question {
+        color: #0F2942;
+      }
+
+      .theme-blue-light .faq-toggle-icon {
+        background: #EFF6FF;
+        color: #1D4ED8;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .btn-cta::after,
+        .mockup-floating-badge,
+        .stream-pulse-dot {
+          animation: none !important;
+        }
       }
 
       /* ==========================================================================
@@ -2763,9 +3082,9 @@
           Livro de Colorir de Natal
         </h1>
 
-        <!-- Subtítulo com destaque visual em +200 DESENHOS -->
+        <!-- Subtítulo com destaque visual em +300 DESENHOS -->
         <p class="hero-subtitle text-balance">
-          <span class="hero-badge-drawings">+200 DESENHOS</span> para as crianças se divertirem na ceia e nas férias!
+          <span class="hero-badge-drawings">+300 DESENHOS</span> para as crianças se divertirem na ceia e nas férias!
         </p>
 
         <!-- Frase curta (limpa, sem estrelinhas de IA) -->
@@ -2776,8 +3095,8 @@
         <!-- Mockup grande do livro com páginas coloridas ao redor -->
         <div class="mockup-container">
           <img
-            src="/assets/aistudio/Christmas_Coloring_Book_Holiday_Display_12c2faf7.png"
-            alt="Livro de Colorir de Natal com mais de 200 páginas impressas e coloridas"
+            src="/assets/aistudio/_300_Christmas_Coloring_Pages_Setup_59191e83.png"
+            alt="Livro de Colorir de Natal com mais de 300 páginas para imprimir e colorir"
             class="mockup-img"
             loading="eager"
             referrerpolicy="no-referrer"
@@ -2865,8 +3184,8 @@
       </div>
     </header>
 
-    <!-- 3. FAIXA DE 4 BENEFÍCIOS RÁPIDOS (SVGs PROFISSIONAIS) -->
-    <section class="benefits-strip" aria-label="Benefícios do Livro">
+    <!-- 3. FAIXA DE 4 BENEFÍCIOS RÁPIDOS (TEMA VERDE) -->
+    <section class="benefits-strip theme-green" aria-label="Benefícios do Livro">
       <div class="container">
         <div class="benefits-grid">
           <div class="benefit-item">
@@ -2905,11 +3224,12 @@
       </div>
     </section>
 
-    <!-- 4. CARROSSEL 1: "VEJA POR DENTRO" -->
-    <section class="section-wrap reveal" id="veja-por-dentro">
+    <!-- 4. CARROSSEL 1: "VEJA POR DENTRO" (TEMA AZUL INVERNAL COM NEVES CAINDO) -->
+    <section class="section-wrap theme-blue-snow reveal" id="veja-por-dentro">
+      <canvas class="blue-snow-canvas" aria-hidden="true"></canvas>
       <div class="container">
         <div class="section-header">
-          <div class="badge-tag badge-gold">Folhas do Livro em PDF</div>
+          <div class="badge-tag">Folhas do Livro em PDF</div>
           <h2 class="text-balance">Olha só o que tem dentro</h2>
           <p class="text-balance">Traços bem definidos e fáceis de colorir que prendem a atenção dos pequenos.</p>
         </div>
@@ -2935,24 +3255,24 @@
 
 
 
-    <!-- 6. SEÇÃO "O QUE VEM NO LIVRO" (GRADE DE 6 CARDS) -->
-    <section class="section-wrap reveal">
+    <!-- 6. SEÇÃO "O QUE VEM NO LIVRO" (TEMA VERDE) -->
+    <section class="section-wrap theme-green reveal">
       <div class="container">
         <div class="section-header">
-          <div class="badge-tag badge-gold">Conteúdo do Material</div>
+          <div class="badge-tag">Conteúdo do Material</div>
           <h2 class="text-balance">O que vem no livro?</h2>
-          <p>Mais de 200 páginas ricas em detalhes natalinos organizadas com carinho.</p>
+          <p>Mais de 300 páginas ricas em detalhes natalinos organizadas com carinho.</p>
         </div>
 
         <div class="what-inside-grid">
           <!-- Card 1 -->
           <div class="inside-card">
             <div class="inside-img-wrap">
-              <img src="/src/assets/images/coloring_page_santa_1792843835372.jpg" alt="Desenho do Papai Noel para colorir" loading="lazy" />
+              <img src="/assets/images/coloring_page_santa_1792843835372.jpg" alt="Desenho do Papai Noel para colorir" loading="lazy" />
             </div>
             <div class="inside-content">
               <h3 class="inside-title">Papai Noel</h3>
-              <span class="inside-count">+35 desenhos</span>
+              <span class="inside-count">+50 desenhos</span>
             </div>
           </div>
 
@@ -2963,7 +3283,7 @@
             </div>
             <div class="inside-content">
               <h3 class="inside-title">Árvores de Natal</h3>
-              <span class="inside-count">+35 desenhos</span>
+              <span class="inside-count">+50 desenhos</span>
             </div>
           </div>
 
@@ -2974,7 +3294,7 @@
             </div>
             <div class="inside-content">
               <h3 class="inside-title">Renas Fofinhas</h3>
-              <span class="inside-count">+30 desenhos</span>
+              <span class="inside-count">+50 desenhos</span>
             </div>
           </div>
 
@@ -2985,7 +3305,7 @@
             </div>
             <div class="inside-content">
               <h3 class="inside-title">Guirlandas & Enfeites</h3>
-              <span class="inside-count">+30 desenhos</span>
+              <span class="inside-count">+50 desenhos</span>
             </div>
           </div>
 
@@ -2996,7 +3316,7 @@
             </div>
             <div class="inside-content">
               <h3 class="inside-title">Doces & Bengalas</h3>
-              <span class="inside-count">+35 desenhos</span>
+              <span class="inside-count">+50 desenhos</span>
             </div>
           </div>
 
@@ -3007,21 +3327,21 @@
             </div>
             <div class="inside-content">
               <h3 class="inside-title">Trenó & Brincadeiras</h3>
-              <span class="inside-count">+35 desenhos</span>
+              <span class="inside-count">+50 desenhos</span>
             </div>
           </div>
         </div>
 
         <div style="text-align: center; margin-top: 36px;">
-          <a href="#comprar" class="btn-cta cta-trigger">
-            QUERO TODOS OS +200 DESENHOS 🎁
+          <a href="#comprar" class="btn-cta btn-cta-green cta-trigger">
+            QUERO TODOS OS +300 DESENHOS 🎁
           </a>
         </div>
       </div>
     </section>
 
-    <!-- 7. CARROSSEL 2: "COMO AS CRIANÇAS ADORAM USAR" -->
-    <section class="section-wrap reveal" style="background-color: #FFFFFF;">
+    <!-- 7. CARROSSEL 2: "COMO AS CRIANÇAS ADORAM USAR" (TEMA VERMELHO) -->
+    <section class="section-wrap theme-red reveal">
       <div class="container">
         <div class="section-header">
           <div class="badge-tag">Momentos em Família</div>
@@ -3045,11 +3365,11 @@
       </div>
     </section>
 
-    <!-- 8. SEÇÃO "TRAÇO CERTO PARA CADA IDADE" -->
-    <section class="section-wrap reveal">
+    <!-- 8. SEÇÃO "TRAÇO CERTO PARA CADA IDADE" (TEMA VERDE) -->
+    <section class="section-wrap theme-green reveal">
       <div class="container">
         <div class="section-header">
-          <div class="badge-tag badge-gold">Desenvolvimento Infantil</div>
+          <div class="badge-tag">Desenvolvimento Infantil</div>
           <h2 class="text-balance">Traço certo para cada idade</h2>
           <p>Atividades pensadas para não frustrar os menores e desafiar os maiores.</p>
         </div>
@@ -3061,7 +3381,7 @@
               <p class="age-desc" style="margin-top: 12px;">Desenhos grandes e contornos simples</p>
             </div>
             <div class="age-preview-box">
-              <img src="/src/assets/images/coloring_page_reindeer_1792843837266.jpg" alt="Exemplo para 3 a 5 anos" loading="lazy" />
+              <img src="/assets/images/coloring_page_reindeer_1792843837266.jpg" alt="Exemplo para 3 a 5 anos" loading="lazy" />
             </div>
           </div>
 
@@ -3071,7 +3391,7 @@
               <p class="age-desc" style="margin-top: 12px;">Desenhos médios e cheios de fofura</p>
             </div>
             <div class="age-preview-box">
-              <img src="/src/assets/images/coloring_page_santa_1792843835372.jpg" alt="Exemplo para 6 a 8 anos" loading="lazy" />
+              <img src="/assets/images/coloring_page_santa_1792843835372.jpg" alt="Exemplo para 6 a 8 anos" loading="lazy" />
             </div>
           </div>
 
@@ -3081,15 +3401,16 @@
               <p class="age-desc" style="margin-top: 12px;">Mais detalhes para soltar a imaginação</p>
             </div>
             <div class="age-preview-box">
-              <img src="/src/assets/images/coloring_page_tree_1792843837343.jpg" alt="Exemplo para 9 a 10 anos" loading="lazy" />
+              <img src="/assets/images/coloring_page_tree_1792843837343.jpg" alt="Exemplo para 9 a 10 anos" loading="lazy" />
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 9. SEÇÃO "3 PASSOS" (LIMPO E SEM EMOJIS GENÉRICOS) -->
-    <section class="section-wrap reveal" style="background-color: #FFFFFF;">
+    <!-- 9. SEÇÃO "3 PASSOS" (TEMA AZUL INVERNAL COM NEVES CAINDO) -->
+    <section class="section-wrap theme-blue-snow reveal">
+      <canvas class="blue-snow-canvas" aria-hidden="true"></canvas>
       <div class="container">
         <div class="section-header">
           <div class="badge-tag">Como Funciona</div>
@@ -3121,9 +3442,9 @@
     </section>
 
     <!-- ==========================================================================
-         SEÇÃO DE PROVAS SOCIAIS (PRINTS E FOTOS REAIS DE CLIENTES)
+         SEÇÃO DE PROVAS SOCIAIS (TEMA VERMELHO)
          ========================================================================== -->
-    <section class="ps-section reveal" id="provas-sociais">
+    <section class="ps-section theme-red reveal" id="provas-sociais">
       <div class="ps-container">
         <div class="ps-gallery-title-wrap">
           <h2 class="ps-gallery-heading">O que as mães dizem sobre o livro</h2>
@@ -3241,8 +3562,8 @@
       </div>
     </section>
 
-    <!-- 10. CARD DE OFERTA (DESTAQUE MÁXIMO) -->
-    <section class="offer-section reveal" id="comprar">
+    <!-- 10. CARD DE OFERTA (TEMA VERMELHO - DESTAQUE MÁXIMO) -->
+    <section class="offer-section theme-red reveal" id="comprar">
       <div class="container">
         <div class="offer-card" id="offer-card">
           <div class="offer-ribbon" id="offer-ribbon">
@@ -3251,19 +3572,19 @@
 
           <!-- Mockup do livro dentro da oferta -->
           <div class="offer-mockup-thumb">
-            <img src="/assets/aistudio/Christmas_Coloring_Book_Holiday_Display_12c2faf7.png" alt="Livro de Colorir de Natal - Oferta Especial" loading="lazy" />
+            <img src="/assets/aistudio/_300_Christmas_Coloring_Pages_Setup_59191e83.png" alt="Livro de Colorir de Natal - Oferta Especial" loading="lazy" />
           </div>
 
           <h2 style="font-size: clamp(1.8rem, 4.5vw, 2.4rem); color: var(--cor-vermelho); margin-bottom: 6px;">
             Livro de Colorir de Natal
           </h2>
-          <p style="color: var(--cor-texto-suave); font-weight: 700;">Acesso vitalício e ilimitado a todos os +200 desenhos</p>
+          <p style="color: var(--cor-texto-suave); font-weight: 700;">Acesso vitalício e ilimitado a todos os +300 desenhos</p>
 
           <!-- Checklist com checks verdes -->
           <ul class="offer-checklist">
             <li>
               <span class="check-icon">✓</span>
-              <span>Mais de 200 desenhos para colorir em alta resolução</span>
+              <span>Mais de 300 desenhos para colorir em alta resolução</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
@@ -3322,8 +3643,8 @@
       </div>
     </section>
 
-    <!-- 11. GARANTIA -->
-    <section class="section-wrap reveal">
+    <!-- 11. GARANTIA (TEMA VERDE) -->
+    <section class="section-wrap theme-green reveal">
       <div class="container">
         <div class="guarantee-card">
           <div class="guarantee-badge-art">
@@ -3333,7 +3654,7 @@
           <div class="guarantee-content">
             <h3>Garantia Incondicional de 7 Dias</h3>
             <p>Teste por 7 dias. Se você ou seus filhos não amarem os desenhos, basta um e-mail para receber 100% do seu dinheiro de volta sem nenhuma complicação.</p>
-            <a href="#comprar" class="btn-cta cta-trigger" style="font-size: 1rem; padding: 12px 26px;">
+            <a href="#comprar" class="btn-cta btn-cta-green cta-trigger" style="font-size: 1rem; padding: 12px 26px;">
               QUERO APROVEITAR A GARANTIA
             </a>
           </div>
@@ -3341,8 +3662,9 @@
       </div>
     </section>
 
-    <!-- 12. PERGUNTAS FREQUENTES (FAQ ACORDEÃO) -->
-    <section class="section-wrap reveal" style="background-color: #FFFFFF;">
+    <!-- 12. PERGUNTAS FREQUENTES (TEMA AZUL GELO COM NEVES CAINDO) -->
+    <section class="section-wrap theme-blue-light reveal">
+      <canvas class="blue-snow-canvas" data-snow-tone="light" aria-hidden="true"></canvas>
       <div class="container">
         <div class="section-header">
           <div class="badge-tag">Dúvidas Frequentes</div>
@@ -3358,7 +3680,7 @@
               <span class="faq-toggle-icon">+</span>
             </button>
             <div class="faq-answer">
-              <p>São mais de 200 desenhos natalinos prontos para imprimir em folha A4 com temas de Papai Noel, Renas, Árvores, Presépio, Bonecos de Neve e muito mais.</p>
+              <p>São mais de 300 desenhos natalinos prontos para imprimir em folha A4 com temas de Papai Noel, Renas, Árvores, Presépio, Bonecos de Neve e muito mais.</p>
             </div>
           </div>
 
@@ -3431,8 +3753,9 @@
       </div>
     </section>
 
-    <!-- 13. CTA FINAL -->
-    <section class="final-cta-section reveal">
+    <!-- 13. CTA FINAL (TEMA AZUL INVERNAL COM NEVES CAINDO) -->
+    <section class="final-cta-section theme-blue-snow reveal">
+      <canvas class="blue-snow-canvas" aria-hidden="true"></canvas>
       <div class="container">
         <h2 class="final-cta-title text-balance" id="final-cta-title">
           Garanta o Natal das crianças por R$ 20,00
@@ -3456,7 +3779,7 @@
     <!-- 15. BOTÃO FIXO MOBILE (STICKY BOTTOM BAR) -->
     <div class="sticky-mobile-cta" id="sticky-bar" aria-label="Ação rápida de compra">
       <div class="sticky-mobile-info">
-        <span class="sticky-mobile-prod">Livro +200 Desenhos</span>
+        <span class="sticky-mobile-prod">Livro +300 Desenhos</span>
         <span class="sticky-mobile-price" id="sticky-price-val">R$ 20,00</span>
         <span class="sticky-mobile-timer" id="sticky-timer-val" style="display: none; font-size: 0.72rem; font-weight: 800; color: #DC2626;">⏰ <span class="discount-countdown-text">29:59</span></span>
       </div>
@@ -3528,7 +3851,7 @@
         </svg>
       </button>
       <div class="sales-toast-thumb-wrap">
-        <img src="/assets/aistudio/Christmas_Coloring_Book_Holiday_Display_12c2faf7.png" alt="Livro de Colorir de Natal" class="sales-toast-thumb" />
+        <img src="/assets/aistudio/_300_Christmas_Coloring_Pages_Setup_59191e83.png" alt="Livro de Colorir de Natal" class="sales-toast-thumb" />
         <span class="sales-toast-badge-check" title="Compra Verificada">
           <svg viewBox="0 0 24 24" width="10" height="10" stroke="#FFFFFF" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="20 6 9 17 4 12"></polyline>
@@ -3589,7 +3912,7 @@
         {
           titulo: "Papai Noel Alegre",
           legenda: "Traço grosso e simpático",
-          imagem: "/src/assets/images/coloring_page_santa_1792843835372.jpg"
+          imagem: "/assets/images/coloring_page_santa_1792843835372.jpg"
         },
         {
           titulo: "Bengala Doce Natalina",
@@ -3624,12 +3947,12 @@
         {
           titulo: "Árvore de Natal Enfeitada",
           legenda: "Com presentes e estrela",
-          imagem: "/src/assets/images/coloring_page_tree_1792843837343.jpg"
+          imagem: "/assets/images/coloring_page_tree_1792843837343.jpg"
         },
         {
           titulo: "Rena Rodolfo com Sininhos",
           legenda: "Fácil e divertido de colorir",
-          imagem: "/src/assets/images/coloring_page_reindeer_1792843837266.jpg"
+          imagem: "/assets/images/coloring_page_reindeer_1792843837266.jpg"
         }
       ];
 
@@ -4314,6 +4637,191 @@
       }
 
       /* ==========================================================================
+         NEVES CAINDO NAS SEÇÕES AZUIS (EFEITO ESTÉTICO DE INVERNO)
+         ========================================================================== */
+      function setupBlueSnowCanvases() {
+        const canvases = document.querySelectorAll('.blue-snow-canvas');
+        if (!canvases.length) return;
+
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        canvases.forEach((canvas) => {
+          const parent = canvas.parentElement;
+          if (!parent) return;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) return;
+
+          const isLightBg = canvas.dataset.snowTone === 'light';
+          let width = 0;
+          let height = 0;
+          let flakes = [];
+          let isVisible = true;
+          let rafId = null;
+
+          function createFlakes(w, h) {
+            const isMobile = w < 768;
+            const count = isMobile ? 34 : 62;
+            const list = [];
+            for (let i = 0; i < count; i++) {
+              const isCrystal = Math.random() > 0.82;
+              list.push({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                r: isCrystal ? (Math.random() * 2.5 + 3.2) : (Math.random() * 2.6 + 1.1),
+                speedY: isCrystal ? (Math.random() * 0.55 + 0.5) : (Math.random() * 0.85 + 0.45),
+                swayAmp: Math.random() * 0.55 + 0.2,
+                swayFreq: Math.random() * 0.02 + 0.008,
+                phase: Math.random() * Math.PI * 2,
+                rotation: Math.random() * Math.PI,
+                rotSpeed: (Math.random() - 0.5) * 0.015,
+                opacity: isLightBg ? (Math.random() * 0.45 + 0.45) : (Math.random() * 0.55 + 0.35),
+                isCrystal
+              });
+            }
+            return list;
+          }
+
+          function resizeCanvas() {
+            const rect = parent.getBoundingClientRect();
+            const nextW = Math.max(1, Math.floor(rect.width));
+            const nextH = Math.max(1, Math.floor(rect.height));
+            if (nextW === width && nextH === height) return;
+
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            width = nextW;
+            height = nextH;
+            canvas.width = Math.floor(width * dpr);
+            canvas.height = Math.floor(height * dpr);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            if (!flakes.length) {
+              flakes = createFlakes(width, height);
+            } else {
+              flakes.forEach((f) => {
+                if (f.x > width) f.x = Math.random() * width;
+                if (f.y > height) f.y = Math.random() * height;
+              });
+            }
+          }
+
+          function drawCrystal(x, y, radius, rotation, opacity) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(rotation);
+            ctx.strokeStyle = isLightBg
+              ? `rgba(255, 255, 255, ${Math.min(1, opacity + 0.15)})`
+              : `rgba(224, 242, 254, ${opacity})`;
+            ctx.lineWidth = isLightBg ? 1.5 : 1.2;
+            ctx.lineCap = 'round';
+            if (isLightBg) {
+              ctx.shadowColor = 'rgba(37, 99, 235, 0.25)';
+              ctx.shadowBlur = 4;
+            }
+            for (let i = 0; i < 3; i++) {
+              const angle = (i * Math.PI) / 3;
+              const dx = Math.cos(angle) * radius;
+              const dy = Math.sin(angle) * radius;
+              ctx.beginPath();
+              ctx.moveTo(-dx, -dy);
+              ctx.lineTo(dx, dy);
+              ctx.stroke();
+            }
+            ctx.restore();
+          }
+
+          function renderFrame(shouldStep) {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < flakes.length; i++) {
+              const f = flakes[i];
+
+              if (shouldStep) {
+                f.phase += f.swayFreq;
+                f.y += f.speedY;
+                f.x += Math.sin(f.phase) * f.swayAmp;
+                f.rotation += f.rotSpeed;
+
+                if (f.y > height + 10) {
+                  f.y = -10;
+                  f.x = Math.random() * width;
+                }
+                if (f.x > width + 10) f.x = -10;
+                if (f.x < -10) f.x = width + 10;
+              }
+
+              if (f.isCrystal) {
+                drawCrystal(f.x, f.y, f.r, f.rotation, f.opacity);
+              } else {
+                ctx.beginPath();
+                ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+                if (isLightBg) {
+                  ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(1, f.opacity + 0.2)})`;
+                  ctx.fill();
+                  ctx.strokeStyle = `rgba(59, 130, 246, ${f.opacity * 0.35})`;
+                  ctx.lineWidth = 0.8;
+                  ctx.stroke();
+                } else {
+                  ctx.fillStyle = `rgba(240, 249, 255, ${f.opacity})`;
+                  ctx.fill();
+                }
+              }
+            }
+          }
+
+          function loop() {
+            if (!isVisible) {
+              rafId = null;
+              return;
+            }
+            renderFrame(true);
+            rafId = requestAnimationFrame(loop);
+          }
+
+          function startLoop() {
+            if (prefersReducedMotion) {
+              renderFrame(false);
+              return;
+            }
+            if (rafId === null && isVisible) {
+              rafId = requestAnimationFrame(loop);
+            }
+          }
+
+          resizeCanvas();
+
+          if ('ResizeObserver' in window) {
+            const ro = new ResizeObserver(() => {
+              resizeCanvas();
+              if (prefersReducedMotion) renderFrame(false);
+            });
+            ro.observe(parent);
+          } else {
+            window.addEventListener('resize', () => {
+              resizeCanvas();
+              if (prefersReducedMotion) renderFrame(false);
+            });
+          }
+
+          if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+              entries.forEach((entry) => {
+                isVisible = entry.isIntersecting;
+                if (isVisible) {
+                  startLoop();
+                } else if (rafId !== null) {
+                  cancelAnimationFrame(rafId);
+                  rafId = null;
+                }
+              });
+            }, { rootMargin: '120px 0px' });
+            io.observe(parent);
+          }
+
+          startLoop();
+        });
+      }
+
+      /* ==========================================================================
          NOTIFICAÇÃO FLUTUANTE DE COMPRA RECENTE (PROVA SOCIAL DINÂMICA)
          ========================================================================== */
       function setupSalesNotifications() {
@@ -4771,7 +5279,7 @@
           // CTA Final
           const finalCtaTitle = document.getElementById('final-cta-title');
           const finalCtaBtn = document.getElementById('final-cta-btn');
-          if (finalCtaTitle) finalCtaTitle.innerHTML = 'Garanta o Natal das crianças por apenas <span style="color: #059669;">R$ 10,00</span>';
+          if (finalCtaTitle) finalCtaTitle.innerHTML = 'Garanta o Natal das crianças por apenas <span style="color: #6EE7B7;">R$ 10,00</span>';
           if (finalCtaBtn) finalCtaBtn.innerHTML = 'QUERO MEU LIVRO POR R$ 10,00 🎅';
 
           // FAQ
@@ -4902,6 +5410,7 @@
         setupCheckoutButtons();
         setupScrollReveal();
         setupSnowCanvas();
+        setupBlueSnowCanvases();
         setupSalesNotifications();
         setupSocialProofInteractions();
         setupDiscountCelebrationSystem();
