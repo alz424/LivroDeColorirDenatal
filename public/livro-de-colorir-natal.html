@@ -54,7 +54,6 @@
         font-family: var(--fonte-corpo);
         background-color: var(--cor-fundo);
         color: var(--cor-texto);
-        overflow-x: hidden;
         width: 100%;
         max-width: 100%;
         overscroll-behavior-x: none;
@@ -63,6 +62,7 @@
       body {
         position: relative;
         overflow-x: hidden;
+        overflow-x: clip;
         width: 100%;
         max-width: 100%;
         min-height: 100vh;
@@ -73,6 +73,7 @@
 
       header, section, footer {
         max-width: 100%;
+        overflow-x: hidden;
         overflow-x: clip;
       }
 
@@ -4519,7 +4520,7 @@
          ========================================================================== */
       function setupDiscountCelebrationSystem() {
         const confettiCanvas = document.getElementById('discount-confetti-canvas');
-        let isUnlocked = sessionStorage.getItem('desconto_1000_unlocked') === 'true';
+        let isUnlocked = false;
         let countdownTimer = null;
         const DURATION_SECONDS = 30 * 60; // 30 minutos
 
@@ -4835,25 +4836,52 @@
           }
         }
 
-        // Se já foi desbloqueado nesta sessão, aplica os preços imediatamente sem reanimar
-        if (isUnlocked) {
-          applyDiscountDOM();
-          startDiscountTimer();
-        } else {
-          // Gatilho ao rolar mais para baixo (~900px a 1150px)
-          function checkScroll() {
-            if (isUnlocked) return;
-            const scrollY = window.scrollY || window.pageYOffset;
-            const threshold = Math.max(900, Math.min(1250, window.innerHeight * 1.3));
+        // Sempre inicia em R$ 20,00 e libera o desconto para R$ 10,00 ao rolar para baixo
+        let scrollObserver = null;
 
-            if (scrollY > threshold) {
-              window.removeEventListener('scroll', checkScroll);
-              triggerCelebrationDiscount(true);
-            }
+        function cleanupScrollListeners() {
+          window.removeEventListener('scroll', checkScroll);
+          document.removeEventListener('scroll', checkScroll);
+          window.removeEventListener('touchmove', checkScroll);
+          if (scrollObserver) {
+            scrollObserver.disconnect();
+            scrollObserver = null;
           }
-
-          window.addEventListener('scroll', checkScroll, { passive: true });
         }
+
+        function checkScroll() {
+          if (isUnlocked) return;
+          const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          const threshold = Math.max(850, Math.min(1150, window.innerHeight * 1.15));
+
+          if (scrollY > threshold) {
+            cleanupScrollListeners();
+            triggerCelebrationDiscount(true);
+          }
+        }
+
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        document.addEventListener('scroll', checkScroll, { passive: true });
+        window.addEventListener('touchmove', checkScroll, { passive: true });
+
+        const targetSection = document.getElementById('veja-por-dentro');
+        if (targetSection && 'IntersectionObserver' in window) {
+          scrollObserver = new IntersectionObserver((entries) => {
+            if (isUnlocked) return;
+            const currentScroll = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            if (currentScroll < 450) return;
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                cleanupScrollListeners();
+                triggerCelebrationDiscount(true);
+                break;
+              }
+            }
+          }, { threshold: 0.55 });
+          scrollObserver.observe(targetSection);
+        }
+
+        checkScroll();
       }
 
       /* ==========================================================================
@@ -4863,6 +4891,8 @@
         try {
           sessionStorage.removeItem('desconto_799_unlocked');
           sessionStorage.removeItem('desconto_799_endtime');
+          sessionStorage.removeItem('desconto_1000_unlocked');
+          sessionStorage.removeItem('desconto_1000_endtime');
         } catch (e) {}
 
         setupCountdown();
